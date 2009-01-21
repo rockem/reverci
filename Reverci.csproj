@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CDB86080-9CB2-48B9-9142-0269520C3877}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Othello</RootNamespace>
+    <AssemblyName>Othello</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
+    <Reference Include="nunit.mocks, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\player\ComputerPlayer.cs" />
+    <Compile Include="src\comp\BoardController.cs" />
+    <Compile Include="src\player\ePlayerType.cs" />
+    <Compile Include="src\eStateType.cs" />
+    <Compile Include="src\comp\IBoardEventListener.cs" />
+    <Compile Include="src\comp\IEventListener.cs" />
+    <Compile Include="src\comp\IStatisticsEventListener.cs" />
+    <Compile Include="src\FileIO.cs" />
+    <Compile Include="src\GameOptions.cs" />
+    <Compile Include="src\player\HumanPlayer.cs" />
+    <Compile Include="src\player\IPlayer.cs" />
+    <Compile Include="src\model\BoardState.cs" />
+    <Compile Include="src\comp\IBoardViewEventListener.cs" />
+    <Compile Include="src\model\eSquareType.cs" />
+    <Compile Include="src\model\IBoardModel.cs" />
+    <Compile Include="src\model\NonValidMoveException.cs" />
+    <Compile Include="src\model\OthelloBoardModel.cs" />
+    <Compile Include="src\comp\StateController.cs" />
+    <Compile Include="src\comp\StatisticsController.cs" />
+    <Compile Include="src\ObjectIO.cs" />
+    <Compile Include="src\player\PlayerFactory.cs" />
+    <Compile Include="src\SavedGame.cs" />
+    <Compile Include="src\StatisticsHolder.cs" />
+    <Compile Include="src\comp\StatusController.cs" />
+    <Compile Include="src\view\IComponentView.cs" />
+    <Compile Include="src\view\eColorType.cs" />
+    <Compile Include="src\view\forms\FormsStateView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\view\forms\FormsStateView.Designer.cs">
+      <DependentUpon>FormsStateView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\view\forms\FormsStatisticsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\view\forms\FormsStatisticsView.Designer.cs">
+      <DependentUpon>FormsStatisticsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\view\forms\FormsStatusView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\view\forms\FormsStatusView.Designer.cs">
+      <DependentUpon>FormsStatusView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\view\IBoardSquareView.cs" />
+    <Compile Include="src\view\IBoardView.cs" />
+    <Compile Include="src\view\forms\FormsBoardView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\view\forms\BoardSquare.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\view\forms\BoardSquare.Designer.cs">
+      <DependentUpon>BoardSquare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\view\forms\FormsGameView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\view\forms\FormsGameView.Designer.cs">
+      <DependentUpon>FormsGameView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\OthelloMain.cs" />
+    <Compile Include="src\view\IGameView.cs" />
+    <Compile Include="src\view\IStateView.cs" />
+    <Compile Include="src\view\IStatusView.cs" />
+    <Compile Include="src\view\IStatisticsView.cs" />
+    <Compile Include="src\OthelloData.cs" />
+    <Compile Include="src\view\StatusMessages.cs" />
+    <Compile Include="test\comp\BoardControllerTest.cs" />
+    <Compile Include="test\model\OthelloBoardModelTest.cs" />
+    <Compile Include="test\comp\StateControllerTest.cs" />
+    <Compile Include="test\StatisticsHolderTest.cs" />
+    <Compile Include="test\comp\StatusControllerTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="src\view\forms\FormsBoardView.resx">
+      <DependentUpon>FormsBoardView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\view\forms\BoardSquare.resx">
+      <DependentUpon>BoardSquare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\view\forms\FormsGameView.resx">
+      <DependentUpon>FormsGameView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\view\forms\FormsStatisticsView.resx">
+      <DependentUpon>FormsStatisticsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\view\forms\FormsStatusView.resx">
+      <DependentUpon>FormsStatusView.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Exercise_Checking_Report.txt" />
+    <Content Include="Othello.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Diagram Ex05.doc" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
