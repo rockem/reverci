@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace Othello.model
+namespace Reverci.model
 {
     [Serializable]
     internal class OthelloBoardModel : IBoardModel
@@ -122,11 +122,11 @@ namespace Othello.model
             protected override Direction[] listOfDirections()
             {
                 return new[]
-                       {
-                           new Direction { XDirection = 1, YDirection = 0 },
-                           new Direction { XDirection = 0, YDirection = 1 },
-                           new Direction { XDirection = 1, YDirection = 1 },
-                       };
+                           {
+                               new Direction { XDirection = 1, YDirection = 0 },
+                               new Direction { XDirection = 0, YDirection = 1 },
+                               new Direction { XDirection = 1, YDirection = 1 },
+                           };
             }
 
             protected override bool isInBounds(int x, int y)
@@ -145,11 +145,11 @@ namespace Othello.model
             protected override Direction[] listOfDirections()
             {
                 return new[]
-                       {
-                           new Direction { XDirection = -1, YDirection = 0 },
-                           new Direction { XDirection = 0, YDirection = -1 },
-                           new Direction { XDirection = -1, YDirection = -1 },
-                       };
+                           {
+                               new Direction { XDirection = -1, YDirection = 0 },
+                               new Direction { XDirection = 0, YDirection = -1 },
+                               new Direction { XDirection = -1, YDirection = -1 },
+                           };
             }
 
             protected override bool isInBounds(int x, int y)
@@ -168,9 +168,9 @@ namespace Othello.model
             protected override Direction[] listOfDirections()
             {
                 return new[]
-                       {
-                           new Direction { XDirection = -1, YDirection = 1 },
-                       };
+                           {
+                               new Direction { XDirection = -1, YDirection = 1 },
+                           };
             }
 
             protected override bool isInBounds(int x, int y)
@@ -189,9 +189,9 @@ namespace Othello.model
             protected override Direction[] listOfDirections()
             {
                 return new[]
-                       {
-                           new Direction { XDirection = 1, YDirection = -1 },
-                       };
+                           {
+                               new Direction { XDirection = 1, YDirection = -1 },
+                           };
             }
 
             protected override bool isInBounds(int x, int y)
@@ -283,6 +283,7 @@ namespace Othello.model
             {
                 result = whoCanIEatFrom(i, j, i_Color).Count > 0;
             }
+
             return result;
         }
 

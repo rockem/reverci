@@ -1,11 +1,11 @@
-﻿namespace Othello.player
+﻿namespace Reverci.player
 {
     public class PlayerFactory
     {
         public static IPlayer createPlayerOfType(ePlayerType i_PlayerType)
         {
             IPlayer player = null;
-            switch(i_PlayerType)
+            switch (i_PlayerType)
             {
                 case ePlayerType.Computer:
                     player = new ComputerPlayer();

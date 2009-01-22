@@ -1,22 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Othello.comp;
-using Othello.model;
+using Reverci.comp;
+using Reverci.model;
 
-namespace Othello.view.forms
+namespace Reverci.view.forms
 {
     internal class FormsBoardView : Panel, IBoardView, IBoardViewEventListener
     {
         private const int r_LabelsThickness = 20;
         private static int s_BoardSize = 8;
-        
+
         private BoardSquare[][] m_ControlSquares;
         private Label[] m_LetterLabels;
         private Label[] m_NumberLabels;
         private Label m_middleLabel;
         private IBoardViewEventListener m_ViewEventListener;
-        
+
         public FormsBoardView()
         {
             InitializeComponent();
@@ -51,11 +51,11 @@ namespace Othello.view.forms
             private Label createInitialLabel()
             {
                 var label = new Label
-                            {
-                                TextAlign = ContentAlignment.MiddleCenter,
-                                BackColor = Color.DarkGray,
-                                ForeColor = Color.White
-                            };
+                                {
+                                    TextAlign = ContentAlignment.MiddleCenter,
+                                    BackColor = Color.DarkGray,
+                                    ForeColor = Color.White
+                                };
                 return label;
             }
 
@@ -191,7 +191,7 @@ namespace Othello.view.forms
 
         public void updateBoardWith(eSquareType[][] i_BoardData)
         {
-            if(i_BoardData.Length != s_BoardSize)
+            if (i_BoardData.Length != s_BoardSize)
             {
                 s_BoardSize = i_BoardData.Length;
                 setupBoard();

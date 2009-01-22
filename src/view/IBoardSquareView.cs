@@ -1,6 +1,6 @@
-﻿using Othello.comp;
+﻿using Reverci.comp;
 
-namespace Othello.view
+namespace Reverci.view
 {
     internal interface IBoardSquareView
     {

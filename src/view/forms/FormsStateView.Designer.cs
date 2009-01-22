@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace Othello.view.forms
+namespace Reverci.view.forms
 {
     partial class FormsStateView
     {
@@ -41,8 +41,8 @@ namespace Othello.view.forms
             // statusStrip1
             // 
             this.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.m_ProgressBar,
-            this.m_StateMessage});
+                                                                             this.m_ProgressBar,
+                                                                             this.m_StateMessage});
             this.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             // this.Location = new System.Drawing.Point(0, 466);
             // this.Name = "statusStrip1";

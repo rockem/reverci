@@ -1,4 +1,4 @@
-﻿namespace Othello
+﻿namespace Reverci
 {
     public enum eStateType
     {

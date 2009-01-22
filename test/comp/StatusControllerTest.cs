@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using Othello.model;
-using Othello.view;
+using Reverci;
+using Reverci.comp;
+using Reverci.model;
+using Reverci.view;
 
-namespace Othello.comp
+namespace Reverci.comp
 {
     [TestFixture]
     public class StatusControllerTest
@@ -63,10 +65,10 @@ namespace Othello.comp
         public void testShouldDelegateMovesListToView()
         {
             var moves = new List<string[]>
-                        {
-                            new[] { "1", "Black", "B5" },
-                            new[] { "2", "White", "E6" },
-                        };
+                            {
+                                new[] { "1", "Black", "B5" },
+                                new[] { "2", "White", "E6" },
+                            };
             m_StatusController.LogMove(1, 4, eSquareType.Black);
             m_StatusController.LogMove(4, 5, eSquareType.White);
             Assert.AreEqual(moves, m_View.m_MovesList);

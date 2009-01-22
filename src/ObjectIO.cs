@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Othello
+namespace Reverci
 {
     public class ObjectIO
     {
@@ -15,7 +15,7 @@ namespace Othello
         public void Write(object i_ObjToWrite)
         {
             var binaryFormatter = new BinaryFormatter();
-            binaryFormatter.Serialize(r_Stream, i_ObjToWrite); 
+            binaryFormatter.Serialize(r_Stream, i_ObjToWrite);
         }
 
         public object Read()

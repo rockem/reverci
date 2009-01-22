@@ -1,4 +1,4 @@
-﻿namespace Othello.player
+﻿namespace Reverci.player
 {
     public enum ePlayerType
     {

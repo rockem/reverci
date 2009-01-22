@@ -1,4 +1,4 @@
-﻿namespace Othello.view.forms
+﻿namespace Reverci.view.forms
 {
     partial class FormsStatusView
     {
@@ -102,12 +102,12 @@
             // m_MovesLogger
             // 
             this.m_MovesLogger.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+                                                                               | System.Windows.Forms.AnchorStyles.Left)
+                                                                              | System.Windows.Forms.AnchorStyles.Right)));
             this.m_MovesLogger.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.moveNumber,
-            this.player,
-            this.position});
+                                                                                            this.moveNumber,
+                                                                                            this.player,
+                                                                                            this.position});
             this.m_MovesLogger.Location = new System.Drawing.Point(0, 140);
             this.m_MovesLogger.Margin = new System.Windows.Forms.Padding(0);
             this.m_MovesLogger.MultiSelect = false;

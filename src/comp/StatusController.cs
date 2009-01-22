@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Othello.model;
-using Othello.view;
+using Reverci.model;
+using Reverci.view;
 
-namespace Othello.comp
+namespace Reverci.comp
 {
     internal class StatusController
     {
@@ -22,11 +22,11 @@ namespace Othello.comp
         {
             m_StateToColorMap = new Dictionary<eStateType, eColorType>
                                     {
-                                        {eStateType.WhiteTurn, eColorType.White},
-                                        {eStateType.BlackTurn, eColorType.Black},
-                                        {eStateType.WhiteWin, eColorType.White},
-                                        {eStateType.BlackWin, eColorType.Black},
-                                        {eStateType.Draw, eColorType.NoColor}
+                                        { eStateType.WhiteTurn, eColorType.White },
+                                        { eStateType.BlackTurn, eColorType.Black },
+                                        { eStateType.WhiteWin, eColorType.White },
+                                        { eStateType.BlackWin, eColorType.Black },
+                                        { eStateType.Draw, eColorType.NoColor }
                                     };
         }
 
@@ -43,11 +43,11 @@ namespace Othello.comp
         public void LogMove(int i_X, int i_Y, eSquareType i_Color)
         {
             m_MovesList.Add(new[]
-                            {
-                                (m_MovesList.Count + 1).ToString(),
-                                i_Color.ToString(),
-                                (char)(i_X + 'A') + (i_Y + 1).ToString()
-                            });
+                                {
+                                    (m_MovesList.Count + 1).ToString(),
+                                    i_Color.ToString(),
+                                    (char)(i_X + 'A') + (i_Y + 1).ToString()
+                                });
             updateMovesList();
         }
 

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Othello.model;
+using Reverci.model;
 
-namespace Othello
+namespace Reverci
 {
     [Serializable]
     public class SavedGame

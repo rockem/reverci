@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 
-namespace Othello.model
+namespace Reverci.model
 {
     public interface IBoardModel
     {

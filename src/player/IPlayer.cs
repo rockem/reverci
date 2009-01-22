@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
-using Othello.model;
+using Reverci.model;
 
-namespace Othello.player
+namespace Reverci.player
 {
     public interface IPlayer
     {

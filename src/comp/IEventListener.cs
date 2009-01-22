@@ -1,4 +1,4 @@
-﻿namespace Othello.comp
+﻿namespace Reverci.comp
 {
     public interface IEventListener
     {

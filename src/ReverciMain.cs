@@ -2,9 +2,9 @@
 using System.Windows.Forms;
 using Othello.view.forms;
 
-namespace Othello
+namespace Reverci
 {
-    public class OthelloMain
+    public class ReverciMain
     {
         [STAThread]
         public static void Main()

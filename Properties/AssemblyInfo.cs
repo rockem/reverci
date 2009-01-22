@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("OthelloMain")]
+[assembly: AssemblyTitle("ReverciMain")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Amdocs")]
-[assembly: AssemblyProduct("OthelloMain")]
+[assembly: AssemblyProduct("ReverciMain")]
 [assembly: AssemblyCopyright("Copyright © Amdocs 2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

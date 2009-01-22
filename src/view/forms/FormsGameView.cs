@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Forms;
-using Othello.comp;
-using Othello.model;
-using Othello.player;
+using Reverci;
+using Reverci.comp;
+using Reverci.model;
+using Reverci.player;
+using Reverci.view;
 
 namespace Othello.view.forms
 {
@@ -203,12 +205,12 @@ namespace Othello.view.forms
         private void doSaveGame(object i_MethodInvoker)
         {
             Thread.Sleep(1000);
-            var savedGame = new SavedGame()
-                            {
-                                Model = r_BoardController.GetModel(),
-                                MovesHistory = r_StatusController.GetMovesLog(),
-                                CurrentTurn = r_BoardController.getCurrentPlayer()
-                            };
+            var savedGame = new SavedGame
+                                {
+                                    Model = r_BoardController.GetModel(),
+                                    MovesHistory = r_StatusController.GetMovesLog(),
+                                    CurrentTurn = r_BoardController.getCurrentPlayer()
+                                };
             FileIO.SaveObjectToFile(m_CurrentFileName, savedGame);
             (i_MethodInvoker as MethodInvoker).Invoke();
         }

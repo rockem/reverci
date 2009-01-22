@@ -1,7 +1,8 @@
 ﻿using System.Drawing;
 using NUnit.Framework;
+using Reverci.model;
 
-namespace Othello.model
+namespace Reverci.model
 {
     [TestFixture]
     public class OthelloBoardModelTest

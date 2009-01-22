@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using Reverci.view.forms;
 
 namespace Othello.view.forms
 {
@@ -51,9 +52,9 @@ namespace Othello.view.forms
             this.whiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.m_WhiteUser = new System.Windows.Forms.ToolStripMenuItem();
             this.m_WhiteComputer = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_StateBar = new Othello.view.forms.FormsStateView();
-            this.m_StatusView = new Othello.view.forms.FormsStatusView();
-            this.m_BoardView = new Othello.view.forms.FormsBoardView();
+            this.m_StateBar = new FormsStateView();
+            this.m_StatusView = new FormsStatusView();
+            this.m_BoardView = new FormsBoardView();
             this.m_MainMenu.SuspendLayout();
             this.SuspendLayout();
             // 

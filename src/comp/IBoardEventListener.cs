@@ -1,6 +1,6 @@
-﻿using Othello.model;
+﻿using Reverci.model;
 
-namespace Othello.comp
+namespace Reverci.comp
 {
     public interface IBoardEventListener
     {

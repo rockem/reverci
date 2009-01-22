@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Othello.view;
+using Reverci.view;
 
-namespace Othello.comp
+namespace Reverci.comp
 {
     internal class StateController
     {
@@ -19,12 +19,12 @@ namespace Othello.comp
         {
             r_MessagesMap = new Dictionary<eStateType, string>
                                 {
-                                    {eStateType.BlackTurn, StatusMessages.BlackTurnMessage},
-                                    {eStateType.WhiteTurn, StatusMessages.WhiteTurnMessage},
-                                    {eStateType.BlackWin, StatusMessages.BlackWinMessage},
-                                    {eStateType.WhiteWin, StatusMessages.WhiteWinMessage},
-                                    {eStateType.Draw, StatusMessages.DrawMessage},
-                                    {eStateType.Thinking, StatusMessages.ThinkMessage}
+                                    { eStateType.BlackTurn, StatusMessages.BlackTurnMessage },
+                                    { eStateType.WhiteTurn, StatusMessages.WhiteTurnMessage },
+                                    { eStateType.BlackWin, StatusMessages.BlackWinMessage },
+                                    { eStateType.WhiteWin, StatusMessages.WhiteWinMessage },
+                                    { eStateType.Draw, StatusMessages.DrawMessage },
+                                    { eStateType.Thinking, StatusMessages.ThinkMessage }
                                 };
         }
 

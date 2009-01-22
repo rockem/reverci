@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using Othello.comp;
-using Othello.model;
+using Reverci.comp;
+using Reverci.model;
 
-namespace Othello.view
+namespace Reverci.view
 {
     public interface IBoardView
     {

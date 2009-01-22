@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Othello
+namespace Reverci
 {
     public class FileIO
     {

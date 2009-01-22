@@ -1,4 +1,4 @@
-﻿namespace Othello.view
+﻿namespace Reverci.view
 {
     public interface IGameView
     {

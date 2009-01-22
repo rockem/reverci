@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
-using Othello.model;
-using Othello.player;
-using Othello.view;
+using Othello;
+using Reverci.model;
+using Reverci.player;
+using Reverci.view;
 
-namespace Othello.comp
+namespace Reverci.comp
 {
     public class BoardController : IBoardViewEventListener
     {
@@ -55,8 +55,8 @@ namespace Othello.comp
                 }
 
                 OthelloData.GetInstance().Statistics.AddGameScore(
-                    blackCount, 
-                    whiteCount, 
+                    blackCount,
+                    whiteCount,
                     ePlayerType.Human,
                     ePlayerType.Human);
             }

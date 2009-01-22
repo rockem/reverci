@@ -1,6 +1,7 @@
-﻿using Othello.view;
+﻿using Othello.comp;
+using Reverci.view;
 
-namespace Othello.comp
+namespace Reverci.comp
 {
     internal class StatisticsController : IStatisticsEventListener
     {

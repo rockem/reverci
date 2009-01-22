@@ -2,11 +2,13 @@
 using System.Drawing;
 using NUnit.Framework;
 using NUnit.Mocks;
-using Othello.model;
-using Othello.player;
-using Othello.view;
+using Reverci;
+using Reverci.comp;
+using Reverci.model;
+using Reverci.player;
+using Reverci.view;
 
-namespace Othello.comp
+namespace Reverci.comp
 {
     [TestFixture]
     public class BoardControllerTest

@@ -1,6 +1,7 @@
 ﻿using System;
+using Othello;
 
-namespace Othello
+namespace Reverci
 {
     internal class OthelloData
     {

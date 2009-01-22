@@ -1,7 +1,9 @@
 ﻿using NUnit.Framework;
-using Othello.view;
+using Reverci;
+using Reverci.comp;
+using Reverci.view;
 
-namespace Othello.comp
+namespace Reverci.comp
 {
     [TestFixture]
     public class StateControllerTest

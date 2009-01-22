@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Othello.model
+namespace Reverci.model
 {
     internal class NonValidMoveException : Exception
     {

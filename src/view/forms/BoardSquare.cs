@@ -2,10 +2,10 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using Othello.comp;
-using Othello.model;
+using Reverci.comp;
+using Reverci.model;
 
-namespace Othello.view.forms
+namespace Reverci.view.forms
 {
     public enum eBackType
     {
@@ -110,9 +110,9 @@ namespace Othello.view.forms
 
             var solidBrush = new SolidBrush(Color.Black);
             var gradientBrush = new PathGradientBrush(path)
-                                {
-                                    CenterPoint = new Point(pieceWidth / 3, pieceHeight / 3)
-                                };
+                                    {
+                                        CenterPoint = new Point(pieceWidth / 3, pieceHeight / 3)
+                                    };
 
             setPieceColor(gradientBrush, solidBrush);
 

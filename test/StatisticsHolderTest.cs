@@ -1,7 +1,8 @@
 ﻿using NUnit.Framework;
-using Othello.player;
+using Reverci;
+using Reverci.player;
 
-namespace Othello
+namespace Reverci
 {
     [TestFixture]
     public class StatisticsHolderTest

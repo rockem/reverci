@@ -1,4 +1,4 @@
-﻿namespace Othello.model
+﻿namespace Reverci.model
 {
     public enum eSquareType
     {

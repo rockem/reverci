@@ -1,5 +1,7 @@
 ﻿using System.Windows.Forms;
 using Othello.comp;
+using Reverci.comp;
+using Reverci.view;
 
 namespace Othello.view.forms
 {

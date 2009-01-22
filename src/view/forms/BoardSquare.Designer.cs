@@ -1,4 +1,4 @@
-﻿namespace Othello.view.forms
+﻿namespace Reverci.view.forms
 {
     partial class BoardSquare
     {

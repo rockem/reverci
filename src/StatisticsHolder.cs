@@ -1,9 +1,9 @@
 ﻿using System;
-using Othello.player;
+using Reverci.player;
 
-namespace Othello
+namespace Reverci
 {
-    [Serializable()]
+    [Serializable]
     public class StatisticsHolder
     {
         public int BlackScore { get; private set; }
@@ -27,9 +27,9 @@ namespace Othello
         public int HnCDraws { get; private set; }
 
         public void AddGameScore(
-            int i_BlackScore, 
+            int i_BlackScore,
             int i_WhiteScore,
-            ePlayerType i_BlackPlayer, 
+            ePlayerType i_BlackPlayer,
             ePlayerType i_WhitePlayer)
         {
             BlackScore += i_BlackScore;
@@ -70,8 +70,8 @@ namespace Othello
         }
 
         private void updateVsComputerWins(
-            int i_BlackScore, 
-            int i_WhiteScore, 
+            int i_BlackScore,
+            int i_WhiteScore,
             ePlayerType i_BlackPlayer,
             ePlayerType i_WhitePlayer)
         {

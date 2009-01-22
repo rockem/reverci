@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Threading;
-using Othello.model;
+using Reverci.model;
 
-namespace Othello.player
+namespace Reverci.player
 {
     internal class ComputerPlayer : IPlayer
     {

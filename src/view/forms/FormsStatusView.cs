@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Othello.view.forms
+namespace Reverci.view.forms
 {
     public partial class FormsStatusView : UserControl, IStatusView
     {
@@ -29,10 +29,10 @@ namespace Othello.view.forms
         public void UpdatePieceQuantity(int i_BlackCount, int i_WhiteCount)
         {
             GenericDelegate dlg = delegate
-                                  {
-                                      m_BlackCount.Text = i_BlackCount.ToString();
-                                      m_WhiteCount.Text = i_WhiteCount.ToString();
-                                  };
+                                      {
+                                          m_BlackCount.Text = i_BlackCount.ToString();
+                                          m_WhiteCount.Text = i_WhiteCount.ToString();
+                                      };
             Invoke(dlg);
         }
 

@@ -1,9 +1,9 @@
 ﻿using System;
-using Othello.player;
+using Reverci.player;
 
 namespace Othello
 {
-    [Serializable()]
+    [Serializable]
     public class GameOptions
     {
         public GameOptions()

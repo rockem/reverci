@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Othello.view.forms
+namespace Reverci.view.forms
 {
     public partial class FormsStateView : StatusStrip, IStateView
     {
