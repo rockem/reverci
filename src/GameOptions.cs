@@ -1,7 +1,7 @@
 ﻿using System;
 using Reverci.player;
 
-namespace Othello
+namespace Reverci
 {
     [Serializable]
     public class GameOptions

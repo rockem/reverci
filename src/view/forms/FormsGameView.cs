@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Forms;
+using Othello.view.forms;
 using Reverci;
 using Reverci.comp;
 using Reverci.model;
 using Reverci.player;
 using Reverci.view;
 
-namespace Othello.view.forms
+namespace Reverci.view.forms
 {
     public partial class FormsGameView : Form, IGameView, IBoardEventListener
     {
@@ -172,7 +173,7 @@ namespace Othello.view.forms
 
         private void setEmptyModel()
         {
-            setModelOnBoard(new OthelloBoardModel(
+            setModelOnBoard(new ReverciBoardModel(
                                 BoardState.CreateInitialBoardWithSize(OthelloData.GetInstance().OthelloOptions.BoardSize)));
         }
 

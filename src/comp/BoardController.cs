@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
-using Othello;
 using Reverci.model;
 using Reverci.player;
 using Reverci.view;
@@ -15,7 +14,7 @@ namespace Reverci.comp
         private readonly Dictionary<eSquareType, IPlayer> r_Players = new Dictionary<eSquareType, IPlayer>();
         private IBoardModel m_BoardModel;
         private IBoardEventListener m_EventListener = new DummyBoardEventListener();
-        private eSquareType m_CurrentPlayer = eSquareType.Black;
+        private eSquareType m_CurrentPlayer;
         private bool m_LockHumanPlay;
         private Point m_LastMove;
 
@@ -23,6 +22,12 @@ namespace Reverci.comp
         {
             r_BoardView = i_View;
             r_BoardView.setEventListener(this);
+            initializeCurrentPlayer();
+        }
+
+        private void initializeCurrentPlayer()
+        {
+            m_CurrentPlayer = eSquareType.Black;
         }
 
         public IBoardView GetView()
@@ -33,6 +38,7 @@ namespace Reverci.comp
         public void SetModel(IBoardModel i_BoardModel)
         {
             m_BoardModel = i_BoardModel;
+            initializeCurrentPlayer();
         }
 
         private void dispatchCurrentState()

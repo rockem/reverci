@@ -9,18 +9,18 @@ namespace Reverci.model
     {
         private const int k_FirstMoveX = 3;
         private const int k_FirstMoveY = 2;
-        private OthelloBoardModel m_BoardModel;
+        private ReverciBoardModel m_BoardModel;
 
         [SetUp]
         public void setUp()
         {
-            m_BoardModel = new OthelloBoardModel(BoardState.CreateInitialBoardWithSize(4));
+            m_BoardModel = new ReverciBoardModel(BoardState.CreateInitialBoardWithSize(4));
         }
 
         [Test]
         public void testShouldSaveInitialState()
         {
-            var boardModel = new OthelloBoardModel(BoardState.CreateInitialBoardWithSize(4));
+            var boardModel = new ReverciBoardModel(BoardState.CreateInitialBoardWithSize(4));
             Assert.AreEqual(BoardState.CreateInitialBoardWithSize(4), boardModel.GetBoard());
         }
 

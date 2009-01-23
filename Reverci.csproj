@@ -85,7 +85,7 @@
     <Compile Include="src\model\eSquareType.cs" />
     <Compile Include="src\model\IBoardModel.cs" />
     <Compile Include="src\model\NonValidMoveException.cs" />
-    <Compile Include="src\model\OthelloBoardModel.cs" />
+    <Compile Include="src\model\ReverciBoardModel.cs" />
     <Compile Include="src\comp\StateController.cs" />
     <Compile Include="src\comp\StatisticsController.cs" />
     <Compile Include="src\ObjectIO.cs" />

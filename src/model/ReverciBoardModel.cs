@@ -5,12 +5,12 @@ using System.Drawing;
 namespace Reverci.model
 {
     [Serializable]
-    internal class OthelloBoardModel : IBoardModel
+    internal class ReverciBoardModel : IBoardModel
     {
         private readonly eSquareType[][] r_BoardData;
         private readonly int r_BoardSize;
 
-        public OthelloBoardModel(eSquareType[][] i_BoardData)
+        public ReverciBoardModel(eSquareType[][] i_BoardData)
         {
             r_BoardData = i_BoardData;
             r_BoardSize = r_BoardData.Length;
@@ -48,10 +48,10 @@ namespace Reverci.model
                 public int YDirection { get; set; }
             }
 
-            private readonly OthelloBoardModel r_BoardModel;
+            private readonly ReverciBoardModel r_BoardModel;
             private readonly eSquareType r_Color;
 
-            protected ScanCommand(OthelloBoardModel i_BoardModel, eSquareType i_Color)
+            protected ScanCommand(ReverciBoardModel i_BoardModel, eSquareType i_Color)
             {
                 r_BoardModel = i_BoardModel;
                 r_Color = i_Color;
@@ -114,7 +114,7 @@ namespace Reverci.model
 
         private class ScanForwardCommand : ScanCommand
         {
-            public ScanForwardCommand(OthelloBoardModel i_BoardModel, eSquareType i_Color) :
+            public ScanForwardCommand(ReverciBoardModel i_BoardModel, eSquareType i_Color) :
                 base(i_BoardModel, i_Color)
             {
             }
@@ -137,7 +137,7 @@ namespace Reverci.model
 
         private class ScanBackwardCommand : ScanCommand
         {
-            public ScanBackwardCommand(OthelloBoardModel i_BoardModel, eSquareType i_Color) :
+            public ScanBackwardCommand(ReverciBoardModel i_BoardModel, eSquareType i_Color) :
                 base(i_BoardModel, i_Color)
             {
             }
@@ -160,7 +160,7 @@ namespace Reverci.model
 
         private class ScanDownBackDiagonalCommand : ScanCommand
         {
-            public ScanDownBackDiagonalCommand(OthelloBoardModel i_BoardModel, eSquareType i_Color) :
+            public ScanDownBackDiagonalCommand(ReverciBoardModel i_BoardModel, eSquareType i_Color) :
                 base(i_BoardModel, i_Color)
             {
             }
@@ -181,7 +181,7 @@ namespace Reverci.model
 
         private class ScanUpForwardDiagonalCommand : ScanCommand
         {
-            public ScanUpForwardDiagonalCommand(OthelloBoardModel i_BoardModel, eSquareType i_Color) :
+            public ScanUpForwardDiagonalCommand(ReverciBoardModel i_BoardModel, eSquareType i_Color) :
                 base(i_BoardModel, i_Color)
             {
             }

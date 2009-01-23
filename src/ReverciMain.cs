@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Othello.view.forms;
+using Reverci.view.forms;
 
 namespace Reverci
 {

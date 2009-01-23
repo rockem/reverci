@@ -2,8 +2,6 @@
 using System.Drawing;
 using NUnit.Framework;
 using NUnit.Mocks;
-using Reverci;
-using Reverci.comp;
 using Reverci.model;
 using Reverci.player;
 using Reverci.view;
@@ -267,6 +265,17 @@ namespace Reverci.comp
                                         new object[] { myMove.X, myMove.Y, eSquareType.White });
             m_BoardController.DispatchMove(myMove.X, myMove.Y);
             m_BoardController.DispatchMove(myMove.X, myMove.Y);
+            m_MockModel.Verify();
+        }
+
+        [Test]
+        public void testShouldSetPlayerBlackOnSetModel()
+        {
+            m_BoardController.DispatchMove(0, 0);
+            m_BoardController.SetModel((IBoardModel)m_MockModel.MockInstance);
+            m_MockModel.ExpectAndReturn("MakeMove", null,
+                                        new object[] {0, 0, eSquareType.Black });
+            m_BoardController.DispatchMove(0, 0);
             m_MockModel.Verify();
         }
 
