@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using Reverci;
 using Reverci.player;
 
 namespace Reverci

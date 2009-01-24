@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using Reverci;
-using Reverci.comp;
 using Reverci.model;
 using Reverci.view;
 

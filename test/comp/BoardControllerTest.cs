@@ -18,7 +18,6 @@ namespace Reverci.comp
         private List<Point> m_PossibleMoves;
         private DynamicMock m_EventListener;
 
-
         private class StubBoardView : IBoardView
         {
             public eSquareType[][] m_Data;
@@ -56,7 +55,6 @@ namespace Reverci.comp
 
             public void setBoardModel(IBoardModel i_Model)
             {
-                
             }
 
             public bool IsAutomatic()
@@ -101,7 +99,8 @@ namespace Reverci.comp
         [Test]
         public void testShouldDelegateToModel()
         {
-            m_MockModel.Expect("MakeMove", new object[] { m_PossibleMoves[0].X, m_PossibleMoves[0].Y, eSquareType.Black });
+            m_MockModel.Expect("MakeMove",
+                               new object[] { m_PossibleMoves[0].X, m_PossibleMoves[0].Y, eSquareType.Black });
             m_BoardView.m_Listener.DispatchMove(m_PossibleMoves[0].X, m_PossibleMoves[0].Y);
             m_MockModel.Verify();
         }
@@ -274,10 +273,9 @@ namespace Reverci.comp
             m_BoardController.DispatchMove(0, 0);
             m_BoardController.SetModel((IBoardModel)m_MockModel.MockInstance);
             m_MockModel.ExpectAndReturn("MakeMove", null,
-                                        new object[] {0, 0, eSquareType.Black });
+                                        new object[] { 0, 0, eSquareType.Black });
             m_BoardController.DispatchMove(0, 0);
             m_MockModel.Verify();
         }
-
     }
 }

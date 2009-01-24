@@ -2,11 +2,9 @@
 using System.Threading;
 using System.Windows.Forms;
 using Othello.view.forms;
-using Reverci;
 using Reverci.comp;
 using Reverci.model;
 using Reverci.player;
-using Reverci.view;
 
 namespace Reverci.view.forms
 {

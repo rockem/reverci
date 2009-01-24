@@ -68,22 +68,31 @@ namespace Reverci.model
                     var currentX = i_X;
                     var currentY = i_Y;
                     var listToEat = new List<Point>();
-                    while (isInBounds(currentX, currentY))
+                    while (true)
                     {
                         currentX += vertDirection;
                         currentY += horizDirection;
-                        if (isOtherColorOn(currentX, currentY))
+                        if (isInBounds(currentX, currentY))
                         {
-                            listToEat.Add(new Point(currentX, currentY));
-                        }
+                            if (isOtherColorOn(currentX, currentY))
+                            {
+                                listToEat.Add(new Point(currentX, currentY));
+                            }
+                            else
+                            {
+                                if (r_BoardModel.r_BoardData[currentX][currentY] == r_Color)
+                                {
+                                    allICanEat.AddRange(listToEat);
+                                }
+
+                                break;
+                            }
+                        } 
                         else
                         {
                             break;
                         }
                     }
-
-                    clearIfCurrentColor(currentX, currentY, listToEat);
-                    allICanEat.AddRange(listToEat);
                 }
 
                 return allICanEat;
@@ -91,20 +100,13 @@ namespace Reverci.model
 
             private bool isOtherColorOn(int currentX, int currentY)
             {
-                return r_BoardModel.r_BoardData[currentX][currentY] == r_BoardModel.getOtherColor(r_Color);
+                return r_BoardModel.r_BoardData[currentX][currentY] ==
+                       r_BoardModel.getOtherColor(r_Color);
             }
 
             protected abstract Direction[] listOfDirections();
 
             protected abstract bool isInBounds(int x, int y);
-
-            private void clearIfCurrentColor(int x, int y, ICollection<Point> listToEat)
-            {
-                if (r_BoardModel.r_BoardData[x][y] != r_Color)
-                {
-                    listToEat.Clear();
-                }
-            }
 
             protected int maxPosition()
             {
@@ -154,7 +156,7 @@ namespace Reverci.model
 
             protected override bool isInBounds(int x, int y)
             {
-                return x > 0 && y > 0;
+                return x >= 0 && y >= 0;
             }
         }
 
@@ -175,7 +177,7 @@ namespace Reverci.model
 
             protected override bool isInBounds(int x, int y)
             {
-                return x > 0 && y < maxPosition();
+                return x >= 0 && y <= maxPosition();
             }
         }
 
@@ -196,7 +198,7 @@ namespace Reverci.model
 
             protected override bool isInBounds(int x, int y)
             {
-                return x < maxPosition() && y > 0;
+                return x <= maxPosition() && y >= 0;
             }
         }
 

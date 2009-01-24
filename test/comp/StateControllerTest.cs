@@ -1,6 +1,4 @@
 ﻿using NUnit.Framework;
-using Reverci;
-using Reverci.comp;
 using Reverci.view;
 
 namespace Reverci.comp
@@ -19,7 +17,6 @@ namespace Reverci.comp
 
             public void SetThinking(bool b)
             {
-                
             }
         }
 
