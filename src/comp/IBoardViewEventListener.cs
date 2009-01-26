@@ -1,6 +1,6 @@
 ﻿namespace Reverci.comp
 {
-    public interface IBoardViewEventListener
+    public interface IBoardViewEventListener : IEventListener
     {
         void DispatchMove(int x, int y);
 

@@ -17,16 +17,35 @@ namespace Reverci.view.forms
         private readonly StatisticsController r_StatisticsController;
         private string m_CurrentFileName;
         private SavedGame m_SavedGame;
+        private FormsBoardLabeler m_BoardView;
 
         public FormsGameView()
         {
             InitializeComponent();
-            m_BoardView.enableResizeEvents();
+            initializeBoardComponent();
             r_BoardController = new BoardController(m_BoardView);
             r_BoardController.setEventListener(this);
             r_StateController = new StateController(m_StateBar);
             r_StatusController = new StatusController(m_StatusView);
             r_StatisticsController = new StatisticsController(new FormsStatisticsView());
+        }
+
+        private void initializeBoardComponent()
+        {
+            SuspendLayout();
+            m_BoardView = new FormsBoardLabeler(new FormsBoardView());
+            m_BoardView.Anchor =
+                ((AnchorStyles.Top | AnchorStyles.Bottom)
+                 | AnchorStyles.Left)
+                | AnchorStyles.Right;
+            m_BoardView.Location = new System.Drawing.Point(0, 24);
+            m_BoardView.Margin = new Padding(0, 0, 0, 5);
+            m_BoardView.Name = "m_BoardView";
+            m_BoardView.Size = new System.Drawing.Size(436, 437);
+            Controls.Add(m_BoardView);
+            ResumeLayout(false);
+            PerformLayout();
+            m_BoardView.EnableResizeEvents();
         }
 
         private void setModelOnBoard(IBoardModel i_Model)

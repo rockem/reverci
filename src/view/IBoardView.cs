@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using Reverci.comp;
 using Reverci.model;
 
 namespace Reverci.view
 {
-    public interface IBoardView
+    public interface IBoardView : IComponentView
     {
         void updateBoardWith(eSquareType[][] i_BoardData);
 
-        void setEventListener(IBoardViewEventListener i_Listener);
+        void addPreview(List<Point> i_Points, eSquareType i_Color);
 
-        void addPreview(List<Point> points, eSquareType color);
+        void EnableResizeEvents();
     }
 }

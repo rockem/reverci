@@ -51,18 +51,17 @@ namespace Reverci.view.forms
             this.whiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.m_WhiteUser = new System.Windows.Forms.ToolStripMenuItem();
             this.m_WhiteComputer = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_StateBar = new FormsStateView();
-            this.m_StatusView = new FormsStatusView();
-            this.m_BoardView = new FormsBoardView();
+            this.m_StateBar = new Reverci.view.forms.FormsStateView();
+            this.m_StatusView = new Reverci.view.forms.FormsStatusView();
             this.m_MainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // m_MainMenu
             // 
             this.m_MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                                                                                        this.fileToolStripMenuItem,
-                                                                                        this.optionsToolStripMenuItem,
-                                                                                        this.playersToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.optionsToolStripMenuItem,
+            this.playersToolStripMenuItem});
             this.m_MainMenu.Location = new System.Drawing.Point(0, 0);
             this.m_MainMenu.Name = "m_MainMenu";
             this.m_MainMenu.Size = new System.Drawing.Size(633, 24);
@@ -72,13 +71,13 @@ namespace Reverci.view.forms
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                                                                                                           this.m_NewGame,
-                                                                                                           this.saveGameToolStripMenuItem,
-                                                                                                           this.loadGameToolStripMenuItem,
-                                                                                                           this.toolStripSeparator1,
-                                                                                                           this.m_Statistics,
-                                                                                                           this.toolStripSeparator2,
-                                                                                                           this.m_Exit});
+            this.m_NewGame,
+            this.saveGameToolStripMenuItem,
+            this.loadGameToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.m_Statistics,
+            this.toolStripSeparator2,
+            this.m_Exit});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -132,8 +131,8 @@ namespace Reverci.view.forms
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                                                                                                              this.m_ShowValidMoves,
-                                                                                                              this.m_PreviewMoves});
+            this.m_ShowValidMoves,
+            this.m_PreviewMoves});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.optionsToolStripMenuItem.Text = "Options";
@@ -157,8 +156,8 @@ namespace Reverci.view.forms
             // playersToolStripMenuItem
             // 
             this.playersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                                                                                                              this.blackToolStripMenuItem,
-                                                                                                              this.whiteToolStripMenuItem});
+            this.blackToolStripMenuItem,
+            this.whiteToolStripMenuItem});
             this.playersToolStripMenuItem.Name = "playersToolStripMenuItem";
             this.playersToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.playersToolStripMenuItem.Text = "Players";
@@ -166,8 +165,8 @@ namespace Reverci.view.forms
             // blackToolStripMenuItem
             // 
             this.blackToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                                                                                                            this.m_BlackUser,
-                                                                                                            this.m_BlackComputer});
+            this.m_BlackUser,
+            this.m_BlackComputer});
             this.blackToolStripMenuItem.Name = "blackToolStripMenuItem";
             this.blackToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.blackToolStripMenuItem.Text = "Black";
@@ -193,8 +192,8 @@ namespace Reverci.view.forms
             // whiteToolStripMenuItem
             // 
             this.whiteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                                                                                                            this.m_WhiteUser,
-                                                                                                            this.m_WhiteComputer});
+            this.m_WhiteUser,
+            this.m_WhiteComputer});
             this.whiteToolStripMenuItem.Name = "whiteToolStripMenuItem";
             this.whiteToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.whiteToolStripMenuItem.Text = "White";
@@ -230,24 +229,13 @@ namespace Reverci.view.forms
             // m_StatusView
             // 
             this.m_StatusView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                                                                             | System.Windows.Forms.AnchorStyles.Right)));
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.m_StatusView.BackColor = System.Drawing.Color.LightSlateGray;
             this.m_StatusView.Location = new System.Drawing.Point(441, 24);
             this.m_StatusView.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.m_StatusView.Name = "m_StatusView";
             this.m_StatusView.Size = new System.Drawing.Size(192, 442);
             this.m_StatusView.TabIndex = 3;
-            // 
-            // m_BoardView
-            // 
-            this.m_BoardView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                                                                             | System.Windows.Forms.AnchorStyles.Left)
-                                                                            | System.Windows.Forms.AnchorStyles.Right)));
-            this.m_BoardView.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.m_BoardView.Location = new System.Drawing.Point(0, 24);
-            this.m_BoardView.Name = "m_BoardView";
-            this.m_BoardView.Size = new System.Drawing.Size(440, 439);
-            this.m_BoardView.TabIndex = 0;
             // 
             // FormsGameView
             // 
@@ -257,7 +245,6 @@ namespace Reverci.view.forms
             this.ClientSize = new System.Drawing.Size(633, 488);
             this.Controls.Add(this.m_StatusView);
             this.Controls.Add(this.m_StateBar);
-            this.Controls.Add(this.m_BoardView);
             this.Controls.Add(this.m_MainMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormsGameView";
@@ -273,7 +260,6 @@ namespace Reverci.view.forms
 
         #endregion
 
-        private FormsBoardView m_BoardView;
         private MenuStrip m_MainMenu;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem m_NewGame;

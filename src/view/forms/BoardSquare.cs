@@ -13,11 +13,11 @@ namespace Reverci.view.forms
         ValidMove
     }
 
-    public partial class BoardSquare : UserControl, IBoardSquareView
+    public partial class BoardSquare : UserControl, IComponentView
     {
         private static readonly Color r_EmptyBackColor = Color.MediumSlateBlue;
         private static readonly Color r_MoveBackColor = Color.DarkOliveGreen;
-        private IBoardViewEventListener m_ViewEventListener;
+        private ISquareListener m_ViewEventListener;
         private Color m_BackgroundColor;
         private eSquareType m_PieceType;
         private eBackType m_BackgroundType;
@@ -167,14 +167,14 @@ namespace Reverci.view.forms
             return Color.FromArgb(r, g, b);
         }
 
-        public void setEventListener(IBoardViewEventListener i_listener)
+        public void setEventListener(IEventListener i_listener)
         {
-            m_ViewEventListener = i_listener;
+            m_ViewEventListener = (ISquareListener)i_listener;
         }
 
         private void BoardSquare_Click(object sender, MouseEventArgs e)
         {
-            m_ViewEventListener.DispatchMove(Position.X, Position.Y);
+            m_ViewEventListener.DispatchClick(Position.X, Position.Y);
         }
 
         private void BoardSquare_MouseLeave(object sender, EventArgs e)

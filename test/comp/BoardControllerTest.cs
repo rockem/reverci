@@ -32,15 +32,20 @@ namespace Reverci.comp
                 m_BoardWasUpdated = true;
             }
 
-            public void setEventListener(IBoardViewEventListener i_Listener)
+            public void setEventListener(IEventListener i_Listener)
             {
-                m_Listener = i_Listener;
+                m_Listener = (IBoardViewEventListener)i_Listener;
             }
 
-            public void addPreview(List<Point> points, eSquareType color)
+            public void addPreview(List<Point> i_Points, eSquareType i_Color)
             {
-                m_PreviewPoints = points;
-                m_PreviewColor = color;
+                m_PreviewPoints = i_Points;
+                m_PreviewColor = i_Color;
+            }
+
+            public void EnableResizeEvents()
+            {
+                
             }
         }
 

@@ -87,7 +87,7 @@ namespace Reverci.model
 
                                 break;
                             }
-                        } 
+                        }
                         else
                         {
                             break;
