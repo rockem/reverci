@@ -9,7 +9,7 @@ namespace Reverci
     {
         public eSquareType CurrentTurn { get; set; }
 
-        public IBoardModel Model { get; set; }
+        public eSquareType[][] Board { get; set; }
 
         public List<string[]> MovesHistory { get; set; }
     }

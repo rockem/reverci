@@ -4,8 +4,7 @@ using System.Drawing;
 
 namespace Reverci.model
 {
-    [Serializable]
-    internal class ReverciBoardModel : IBoardModel
+    public class ReverciBoardModel : IBoardModel
     {
         private readonly eSquareType[][] r_BoardData;
         private readonly int r_BoardSize;

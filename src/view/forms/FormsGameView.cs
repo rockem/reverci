@@ -10,7 +10,7 @@ namespace Reverci.view.forms
 {
     public partial class FormsGameView : Form, IGameView, IBoardEventListener
     {
-        private const string k_FilesFilter = "Othello File (*.ots)|*.OTS";
+        private const string k_FilesFilter = "Othello File (*.ots)|*.ots";
         private readonly BoardController r_BoardController;
         private readonly StateController r_StateController;
         private readonly StatusController r_StatusController;
@@ -48,9 +48,9 @@ namespace Reverci.view.forms
             m_BoardView.EnableResizeEvents();
         }
 
-        private void setModelOnBoard(IBoardModel i_Model)
+        private void setModelOnBoard(eSquareType[][] i_Board)
         {
-            r_BoardController.SetModel(i_Model);
+            r_BoardController.SetModel(new ReverciBoardModel(i_Board));
             r_StatusController.Clear();
             updatePlayers();
         }
@@ -190,8 +190,8 @@ namespace Reverci.view.forms
 
         private void setEmptyModel()
         {
-            setModelOnBoard(new ReverciBoardModel(
-                                BoardState.CreateInitialBoardWithSize(OthelloData.GetInstance().OthelloOptions.BoardSize)));
+            setModelOnBoard(
+                BoardState.CreateInitialBoardWithSize(OthelloData.GetInstance().OthelloOptions.BoardSize));
         }
 
         private void updateMenu()
@@ -225,7 +225,7 @@ namespace Reverci.view.forms
             Thread.Sleep(1000);
             var savedGame = new SavedGame
                                 {
-                                    Model = r_BoardController.GetModel(),
+                                    Board = r_BoardController.GetModel().GetBoard(),
                                     MovesHistory = r_StatusController.GetMovesLog(),
                                     CurrentTurn = r_BoardController.getCurrentPlayer()
                                 };
@@ -249,7 +249,7 @@ namespace Reverci.view.forms
         {
             setProcessingOnStateController(false);
             r_BoardController.setCurrentPlayer(m_SavedGame.CurrentTurn);
-            setModelOnBoard(m_SavedGame.Model);
+            setModelOnBoard(m_SavedGame.Board);
             r_StatusController.SetMovesLog(m_SavedGame.MovesHistory);
         }
 
