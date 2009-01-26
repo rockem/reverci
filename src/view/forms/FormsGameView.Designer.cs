@@ -47,10 +47,16 @@ namespace Reverci.view.forms
             this.playersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.blackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.m_BlackUser = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_BlackComputer = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_BlackDumbComputer = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_BlackOkComputer = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_BlackSmartComputer = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_BlackGeniusComputer = new System.Windows.Forms.ToolStripMenuItem();
             this.whiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.m_WhiteUser = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_WhiteComputer = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_WhiteDumbComputer = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_WhiteOkComputer = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_WhiteSmartComputer = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_WhiteGeniusComputer = new System.Windows.Forms.ToolStripMenuItem();
             this.m_StateBar = new Reverci.view.forms.FormsStateView();
             this.m_StatusView = new Reverci.view.forms.FormsStatusView();
             this.m_MainMenu.SuspendLayout();
@@ -166,9 +172,12 @@ namespace Reverci.view.forms
             // 
             this.blackToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.m_BlackUser,
-            this.m_BlackComputer});
+            this.m_BlackDumbComputer,
+            this.m_BlackOkComputer,
+            this.m_BlackSmartComputer,
+            this.m_BlackGeniusComputer});
             this.blackToolStripMenuItem.Name = "blackToolStripMenuItem";
-            this.blackToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
+            this.blackToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.blackToolStripMenuItem.Text = "Black";
             // 
             // m_BlackUser
@@ -177,25 +186,52 @@ namespace Reverci.view.forms
             this.m_BlackUser.CheckOnClick = true;
             this.m_BlackUser.CheckState = System.Windows.Forms.CheckState.Checked;
             this.m_BlackUser.Name = "m_BlackUser";
-            this.m_BlackUser.Size = new System.Drawing.Size(121, 22);
+            this.m_BlackUser.Size = new System.Drawing.Size(156, 22);
             this.m_BlackUser.Text = "User";
             this.m_BlackUser.Click += new System.EventHandler(this.FormsGameView_BlackUser);
             // 
-            // m_BlackComputer
+            // m_BlackDumbComputer
             // 
-            this.m_BlackComputer.CheckOnClick = true;
-            this.m_BlackComputer.Name = "m_BlackComputer";
-            this.m_BlackComputer.Size = new System.Drawing.Size(121, 22);
-            this.m_BlackComputer.Text = "Computer";
-            this.m_BlackComputer.Click += new System.EventHandler(this.FormsGameView_BlackComputer);
+            this.m_BlackDumbComputer.CheckOnClick = true;
+            this.m_BlackDumbComputer.Name = "m_BlackDumbComputer";
+            this.m_BlackDumbComputer.Size = new System.Drawing.Size(156, 22);
+            this.m_BlackDumbComputer.Text = "Dumb Computer";
+            this.m_BlackDumbComputer.Click += new System.EventHandler(this.FormsGameView_BlackDumbComputer);
+            // 
+            // m_BlackOkComputer
+            // 
+            this.m_BlackOkComputer.CheckOnClick = true;
+            this.m_BlackOkComputer.Name = "m_BlackOkComputer";
+            this.m_BlackOkComputer.Size = new System.Drawing.Size(156, 22);
+            this.m_BlackOkComputer.Text = "Ok Computer";
+            this.m_BlackOkComputer.Click += new System.EventHandler(this.FormsGameView_BlackOkComputer);
+            // 
+            // m_BlackSmartComputer
+            // 
+            this.m_BlackSmartComputer.CheckOnClick = true;
+            this.m_BlackSmartComputer.Name = "m_BlackSmartComputer";
+            this.m_BlackSmartComputer.Size = new System.Drawing.Size(156, 22);
+            this.m_BlackSmartComputer.Text = "Smart Computer";
+            this.m_BlackSmartComputer.Click += new System.EventHandler(this.FormsGameView_BlackSmartComputer);
+            // 
+            // m_BlackGeniusComputer
+            // 
+            this.m_BlackGeniusComputer.CheckOnClick = true;
+            this.m_BlackGeniusComputer.Name = "m_BlackGeniusComputer";
+            this.m_BlackGeniusComputer.Size = new System.Drawing.Size(156, 22);
+            this.m_BlackGeniusComputer.Text = "Genius Computer";
+            this.m_BlackGeniusComputer.Click += new System.EventHandler(this.FormsGameView_BlackGeniusComputer);
             // 
             // whiteToolStripMenuItem
             // 
             this.whiteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.m_WhiteUser,
-            this.m_WhiteComputer});
+            this.m_WhiteDumbComputer,
+            this.m_WhiteOkComputer,
+            this.m_WhiteSmartComputer,
+            this.m_WhiteGeniusComputer});
             this.whiteToolStripMenuItem.Name = "whiteToolStripMenuItem";
-            this.whiteToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
+            this.whiteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.whiteToolStripMenuItem.Text = "White";
             // 
             // m_WhiteUser
@@ -204,17 +240,41 @@ namespace Reverci.view.forms
             this.m_WhiteUser.CheckOnClick = true;
             this.m_WhiteUser.CheckState = System.Windows.Forms.CheckState.Checked;
             this.m_WhiteUser.Name = "m_WhiteUser";
-            this.m_WhiteUser.Size = new System.Drawing.Size(121, 22);
+            this.m_WhiteUser.Size = new System.Drawing.Size(156, 22);
             this.m_WhiteUser.Text = "User";
             this.m_WhiteUser.Click += new System.EventHandler(this.FormsGameView_WhiteUser);
             // 
-            // m_WhiteComputer
+            // m_WhiteDumbComputer
             // 
-            this.m_WhiteComputer.CheckOnClick = true;
-            this.m_WhiteComputer.Name = "m_WhiteComputer";
-            this.m_WhiteComputer.Size = new System.Drawing.Size(121, 22);
-            this.m_WhiteComputer.Text = "Computer";
-            this.m_WhiteComputer.Click += new System.EventHandler(this.FormsGameView_WhiteComputer);
+            this.m_WhiteDumbComputer.CheckOnClick = true;
+            this.m_WhiteDumbComputer.Name = "m_WhiteDumbComputer";
+            this.m_WhiteDumbComputer.Size = new System.Drawing.Size(156, 22);
+            this.m_WhiteDumbComputer.Text = "Dumb Computer";
+            this.m_WhiteDumbComputer.Click += new System.EventHandler(this.FormsGameView_WhiteDumbComputer);
+            // 
+            // m_WhiteOkComputer
+            // 
+            this.m_WhiteOkComputer.CheckOnClick = true;
+            this.m_WhiteOkComputer.Name = "m_WhiteOkComputer";
+            this.m_WhiteOkComputer.Size = new System.Drawing.Size(156, 22);
+            this.m_WhiteOkComputer.Text = "Ok Computer";
+            this.m_WhiteOkComputer.Click += new System.EventHandler(this.FormsGameView_WhiteOkComputer);
+            // 
+            // m_WhiteSmartComputer
+            // 
+            this.m_WhiteSmartComputer.CheckOnClick = true;
+            this.m_WhiteSmartComputer.Name = "m_WhiteSmartComputer";
+            this.m_WhiteSmartComputer.Size = new System.Drawing.Size(156, 22);
+            this.m_WhiteSmartComputer.Text = "Smart Computer";
+            this.m_WhiteSmartComputer.Click += new System.EventHandler(this.FormsGameView_WhiteSmartComputer);
+            // 
+            // m_WhiteGeniusComputer
+            // 
+            this.m_WhiteGeniusComputer.CheckOnClick = true;
+            this.m_WhiteGeniusComputer.Name = "m_WhiteGeniusComputer";
+            this.m_WhiteGeniusComputer.Size = new System.Drawing.Size(156, 22);
+            this.m_WhiteGeniusComputer.Text = "Genius Computer";
+            this.m_WhiteGeniusComputer.Click += new System.EventHandler(this.FormsGameView_WhiteGeniusComputer);
             // 
             // m_StateBar
             // 
@@ -271,15 +331,21 @@ namespace Reverci.view.forms
         private ToolStripMenuItem playersToolStripMenuItem;
         private ToolStripMenuItem blackToolStripMenuItem;
         private ToolStripMenuItem m_BlackUser;
-        private ToolStripMenuItem m_BlackComputer;
         private ToolStripMenuItem whiteToolStripMenuItem;
         private ToolStripMenuItem m_WhiteUser;
-        private ToolStripMenuItem m_WhiteComputer;
+        private ToolStripMenuItem m_WhiteDumbComputer;
         private FormsStateView m_StateBar;
         private FormsStatusView m_StatusView;
         private ToolStripMenuItem saveGameToolStripMenuItem;
         private ToolStripMenuItem loadGameToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripSeparator toolStripSeparator2;
+        private ToolStripMenuItem m_BlackOkComputer;
+        private ToolStripMenuItem m_BlackSmartComputer;
+        private ToolStripMenuItem m_BlackGeniusComputer;
+        private ToolStripMenuItem m_BlackDumbComputer;
+        private ToolStripMenuItem m_WhiteOkComputer;
+        private ToolStripMenuItem m_WhiteSmartComputer;
+        private ToolStripMenuItem m_WhiteGeniusComputer;
     }
 }

@@ -111,8 +111,8 @@ namespace Reverci.model
         public void testShouldRetrievePieceCount()
         {
             makeFirstMove();
-            Assert.AreEqual(4, m_BoardModel.getBlackPieceCount());
-            Assert.AreEqual(1, m_BoardModel.getWhitePieceCount());
+            Assert.AreEqual(4, m_BoardModel.GetPieceCountOfType(eSquareType.Black));
+            Assert.AreEqual(1, m_BoardModel.GetPieceCountOfType(eSquareType.White));
         }
 
         [Test]

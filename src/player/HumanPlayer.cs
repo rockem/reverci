@@ -1,33 +1,16 @@
 ﻿using System;
 using System.Drawing;
-using Reverci.model;
 
 namespace Reverci.player
 {
-    internal class HumanPlayer : IPlayer
+    internal class HumanPlayer : AbstractPlayer
     {
-        private eSquareType m_PlayColor;
-
-        public Point GetMove()
+        public override Point GetMove()
         {
             throw new NotImplementedException();
         }
 
-        public eSquareType getColor()
-        {
-            return m_PlayColor;
-        }
-
-        public void setColor(eSquareType i_Color)
-        {
-            m_PlayColor = i_Color;
-        }
-
-        public void setBoardModel(IBoardModel i_Model)
-        {
-        }
-
-        public bool IsAutomatic()
+        public override bool IsAutomatic()
         {
             return false;
         }

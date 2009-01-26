@@ -12,7 +12,7 @@ namespace Reverci
             ShowPreview = false;
             BoardSize = 8;
             BlackPlayer = ePlayerType.Human;
-            WhitePlayer = ePlayerType.Computer;
+            WhitePlayer = ePlayerType.DumbComputer;
         }
 
         public bool ShowValidMoves { get; set; }

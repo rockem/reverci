@@ -100,7 +100,7 @@ namespace Reverci.model
             private bool isOtherColorOn(int currentX, int currentY)
             {
                 return r_BoardModel.r_BoardData[currentX][currentY] ==
-                       r_BoardModel.getOtherColor(r_Color);
+                       SquareTypeUtil.GetOtherColor(r_Color);
             }
 
             protected abstract Direction[] listOfDirections();
@@ -212,21 +212,6 @@ namespace Reverci.model
             return listToEat;
         }
 
-        private eSquareType getOtherColor(eSquareType i_Color)
-        {
-            eSquareType color;
-            if (i_Color == eSquareType.Black)
-            {
-                color = eSquareType.White;
-            }
-            else
-            {
-                color = eSquareType.Black;
-            }
-
-            return color;
-        }
-
         public eSquareType[][] GetBoard()
         {
             return createACopyOfTheBoard();
@@ -288,12 +273,7 @@ namespace Reverci.model
             return result;
         }
 
-        public int getBlackPieceCount()
-        {
-            return countPieceOfType(eSquareType.Black);
-        }
-
-        private int countPieceOfType(eSquareType i_SquareType)
+        public int GetPieceCountOfType(eSquareType i_SquareType)
         {
             var counter = 0;
             for (var i = 0; i < r_BoardSize; i++)
@@ -308,11 +288,6 @@ namespace Reverci.model
             }
 
             return counter;
-        }
-
-        public int getWhitePieceCount()
-        {
-            return countPieceOfType(eSquareType.White);
         }
     }
 }

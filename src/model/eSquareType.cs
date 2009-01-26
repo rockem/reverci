@@ -7,8 +7,6 @@
         Black,
         ShadowWhite,
         ShadowBlack,
-        Move,
-        MoveBlack,
-        MoveWhite
+        Move
     }
 }

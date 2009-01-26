@@ -57,7 +57,7 @@ namespace Reverci
 
         private void updateVsComputerScore(int i_BlackScore, int i_WhiteScore, ePlayerType i_BlackPlayer)
         {
-            if (i_BlackPlayer == ePlayerType.Computer)
+            if (i_BlackPlayer == ePlayerType.DumbComputer)
             {
                 CompuerScore += i_BlackScore;
                 HumanScore += i_WhiteScore;
@@ -91,7 +91,7 @@ namespace Reverci
 
         private void updatePlayerWins(ePlayerType player)
         {
-            if (player == ePlayerType.Computer)
+            if (player == ePlayerType.DumbComputer)
             {
                 ComputerWins++;
             }

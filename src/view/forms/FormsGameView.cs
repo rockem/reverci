@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Forms;
-using Othello.view.forms;
 using Reverci.comp;
 using Reverci.model;
 using Reverci.player;
@@ -97,53 +96,79 @@ namespace Reverci.view.forms
                 PlayerFactory.createPlayerOfType(OthelloData.GetInstance().OthelloOptions.WhitePlayer));
         }
 
-        private void FormsGameView_BlackComputer(object sender, EventArgs e)
-        {
-            setBlackPlayerAs(ePlayerType.Computer);
-        }
-
         private void setBlackPlayerAs(ePlayerType i_PlayerType)
         {
-            if (i_PlayerType == ePlayerType.Computer)
+            uncheckAllBlackItems();
+            switch (i_PlayerType)
             {
-                m_BlackUser.Checked = false;
-                m_BlackComputer.Checked = true;
-            }
-            else
-            {
-                m_BlackUser.Checked = true;
-                m_BlackComputer.Checked = false;
+                case ePlayerType.Human:
+                    m_BlackUser.Checked = true;
+                    break;
+                case ePlayerType.DumbComputer:
+                    m_BlackDumbComputer.Checked = true;
+                    break;
+                case ePlayerType.OkComputer:
+                    m_BlackOkComputer.Checked = true;
+                    break;
+                case ePlayerType.SmartComputer:
+                    m_BlackSmartComputer.Checked = true;
+                    break;
+                case ePlayerType.GeniusComputer:
+                    m_BlackGeniusComputer.Checked = true;
+                    break;
             }
 
             OthelloData.GetInstance().OthelloOptions.BlackPlayer = i_PlayerType;
             updatePlayers();
         }
 
+        private void uncheckAllBlackItems()
+        {
+            m_BlackUser.Checked = false;
+            m_BlackDumbComputer.Checked = false;
+            m_BlackOkComputer.Checked = false;
+            m_BlackSmartComputer.Checked = false;
+            m_BlackGeniusComputer.Checked = false;
+        }
+
         private void setWhitePlayerAs(ePlayerType i_PlayerType)
         {
-            if (i_PlayerType == ePlayerType.Computer)
+            uncheckAllWhiteItems();
+            switch (i_PlayerType)
             {
-                m_WhiteUser.Checked = false;
-                m_WhiteComputer.Checked = true;
-            }
-            else
-            {
-                m_WhiteUser.Checked = true;
-                m_WhiteComputer.Checked = false;
+                case ePlayerType.Human:
+                    m_WhiteUser.Checked = true;
+                    break;
+                case ePlayerType.DumbComputer:
+                    m_WhiteDumbComputer.Checked = true;
+                    break;
+                case ePlayerType.OkComputer:
+                    m_WhiteOkComputer.Checked = true;
+                    break;
+                case ePlayerType.SmartComputer:
+                    m_WhiteSmartComputer.Checked = true;
+                    break;
+                case ePlayerType.GeniusComputer:
+                    m_WhiteGeniusComputer.Checked = true;
+                    break;
             }
 
             OthelloData.GetInstance().OthelloOptions.WhitePlayer = i_PlayerType;
             updatePlayers();
         }
 
+        private void uncheckAllWhiteItems()
+        {
+            m_WhiteUser.Checked = false;
+            m_WhiteDumbComputer.Checked = false;
+            m_WhiteOkComputer.Checked = false;
+            m_WhiteSmartComputer.Checked = false;
+            m_WhiteGeniusComputer.Checked = false;
+        }
+
         private void FormsGameView_WhiteUser(object sender, EventArgs e)
         {
             setWhitePlayerAs(ePlayerType.Human);
-        }
-
-        private void FormsGameView_WhiteComputer(object sender, EventArgs e)
-        {
-            setWhitePlayerAs(ePlayerType.Computer);
         }
 
         private void FormsGameView_PreviewMoves(object sender, EventArgs e)
@@ -258,6 +283,46 @@ namespace Reverci.view.forms
             Thread.Sleep(1000);
             m_SavedGame = (SavedGame)FileIO.ReadObjectFrom(m_CurrentFileName);
             (i_MethodInvoker as MethodInvoker).Invoke();
+        }
+
+        private void FormsGameView_BlackDumbComputer(object sender, EventArgs e)
+        {
+            setBlackPlayerAs(ePlayerType.DumbComputer);
+        }
+
+        private void FormsGameView_BlackOkComputer(object sender, EventArgs e)
+        {
+            setBlackPlayerAs(ePlayerType.OkComputer);
+        }
+
+        private void FormsGameView_BlackSmartComputer(object sender, EventArgs e)
+        {
+            setBlackPlayerAs(ePlayerType.SmartComputer);
+        }
+
+        private void FormsGameView_BlackGeniusComputer(object sender, EventArgs e)
+        {
+            setBlackPlayerAs(ePlayerType.GeniusComputer);
+        }
+
+        private void FormsGameView_WhiteDumbComputer(object sender, EventArgs e)
+        {
+            setWhitePlayerAs(ePlayerType.DumbComputer);
+        }
+
+        private void FormsGameView_WhiteOkComputer(object sender, EventArgs e)
+        {
+            setWhitePlayerAs(ePlayerType.OkComputer);
+        }
+
+        private void FormsGameView_WhiteSmartComputer(object sender, EventArgs e)
+        {
+            setWhitePlayerAs(ePlayerType.SmartComputer);
+        }
+
+        private void FormsGameView_WhiteGeniusComputer(object sender, EventArgs e)
+        {
+            setWhitePlayerAs(ePlayerType.GeniusComputer);
         }
     }
 }

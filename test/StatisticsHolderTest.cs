@@ -26,7 +26,7 @@ namespace Reverci
             blackScore = 1;
             whiteScore = 2;
             statisticsHolder.AddGameScore(blackScore, whiteScore,
-                                          ePlayerType.Computer, ePlayerType.Human);
+                                          ePlayerType.DumbComputer, ePlayerType.Human);
 
             Assert.AreEqual(blackScore, statisticsHolder.BlackScore);
             Assert.AreEqual(whiteScore, statisticsHolder.WhiteScore);
@@ -41,7 +41,7 @@ namespace Reverci
         [Test]
         public void testShouldAddDrawGame()
         {
-            statisticsHolder.AddGameScore(2, 2, ePlayerType.Human, ePlayerType.Computer);
+            statisticsHolder.AddGameScore(2, 2, ePlayerType.Human, ePlayerType.DumbComputer);
             Assert.AreEqual(1, statisticsHolder.BnWDraws);
             Assert.AreEqual(1, statisticsHolder.HnCDraws);
         }

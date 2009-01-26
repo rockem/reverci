@@ -45,8 +45,8 @@ namespace Reverci.comp
         {
             if (m_BoardModel.GetPossibleMovesFor(getCurrentPlayerColor()).Count == 0)
             {
-                var blackCount = m_BoardModel.getBlackPieceCount();
-                var whiteCount = m_BoardModel.getWhitePieceCount();
+                var blackCount = m_BoardModel.GetPieceCountOfType(eSquareType.Black);
+                var whiteCount = m_BoardModel.GetPieceCountOfType(eSquareType.White);
                 if (blackCount > whiteCount)
                 {
                     m_EventListener.DispatchCurrentState(eStateType.BlackWin);
@@ -88,7 +88,8 @@ namespace Reverci.comp
         private void dispathPieceQuantity()
         {
             m_EventListener.DispatchPieceQuantity(
-                m_BoardModel.getBlackPieceCount(), m_BoardModel.getWhitePieceCount());
+                m_BoardModel.GetPieceCountOfType(eSquareType.Black),
+                m_BoardModel.GetPieceCountOfType(eSquareType.White));
         }
 
         public void DispatchLeaveSquare(int x, int y)
@@ -198,7 +199,7 @@ namespace Reverci.comp
             {
                 m_BoardModel.MakeMove(x, y, getCurrentPlayerColor());
                 m_EventListener.DispatchLastMove(x, y, getCurrentPlayerColor());
-                m_CurrentPlayer = getOtherColor(m_CurrentPlayer);
+                m_CurrentPlayer = SquareTypeUtil.GetOtherColor(m_CurrentPlayer);
                 dispatchCurrentState();
                 dispathPieceQuantity();
                 updateView();
@@ -206,21 +207,6 @@ namespace Reverci.comp
             catch (NonValidMoveException)
             {
             }
-        }
-
-        private eSquareType getOtherColor(eSquareType i_Color)
-        {
-            eSquareType color;
-            if (i_Color == eSquareType.Black)
-            {
-                color = eSquareType.White;
-            }
-            else
-            {
-                color = eSquareType.Black;
-            }
-
-            return color;
         }
 
         private bool currentPlayerIsAutoPlayer()

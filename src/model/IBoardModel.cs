@@ -13,8 +13,6 @@ namespace Reverci.model
 
         List<Point> GetPreviewFor(int i_X, int i_Y, eSquareType i_Color);
 
-        int getWhitePieceCount();
-
-        int getBlackPieceCount();
+        int GetPieceCountOfType(eSquareType i_PieceType);
     }
 }

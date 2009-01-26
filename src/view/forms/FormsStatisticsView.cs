@@ -1,9 +1,8 @@
 ﻿using System.Windows.Forms;
 using Othello.comp;
 using Reverci.comp;
-using Reverci.view;
 
-namespace Othello.view.forms
+namespace Reverci.view.forms
 {
     public partial class FormsStatisticsView : Form, IStatisticsView
     {

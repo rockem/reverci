@@ -9,7 +9,7 @@ namespace Reverci.view.forms
     public partial class FormsBoardLabeler : Panel, IBoardView, IBoardViewEventListener
     {
         private const int r_LabelsThickness = 20;
-        
+
         private readonly IBoardView r_BoardView;
         private static int s_BoardSize = 8;
         private Label[] m_LetterLabels;

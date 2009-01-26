@@ -45,7 +45,6 @@ namespace Reverci.comp
 
             public void EnableResizeEvents()
             {
-                
             }
         }
 
@@ -222,8 +221,8 @@ namespace Reverci.comp
         {
             var blackCount = 3;
             var whiteCount = 4;
-            m_MockModel.SetReturnValue("getBlackPieceCount", blackCount);
-            m_MockModel.SetReturnValue("getWhitePieceCount", whiteCount);
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", blackCount, new object[] { eSquareType.Black });
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", whiteCount, new object[] { eSquareType.White });
             m_EventListener.Expect("DispatchPieceQuantity", new object[] { blackCount, whiteCount });
         }
 
@@ -241,8 +240,10 @@ namespace Reverci.comp
             m_MockModel.SetReturnValue("GetPossibleMovesFor", new List<Point>());
             m_EventListener.Expect("DispatchCurrentState", new object[] { eStateType.Draw });
             var count = 4;
-            m_MockModel.SetReturnValue("getBlackPieceCount", count);
-            m_MockModel.SetReturnValue("getWhitePieceCount", count);
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eSquareType.Black });
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eSquareType.White });
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eSquareType.Black });
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eSquareType.White });
             m_BoardController.DispatchMove(0, 0);
             m_EventListener.Verify();
         }
@@ -253,8 +254,10 @@ namespace Reverci.comp
             m_MockModel.SetReturnValue("GetPossibleMovesFor", new List<Point>());
             m_EventListener.Expect("DispatchCurrentState", new object[] { eStateType.WhiteWin });
             var count = 4;
-            m_MockModel.SetReturnValue("getBlackPieceCount", count);
-            m_MockModel.SetReturnValue("getWhitePieceCount", count + 2);
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eSquareType.Black });
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count + 2, new object[] { eSquareType.White });
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eSquareType.Black });
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count + 2, new object[] { eSquareType.White });
             m_BoardController.DispatchMove(0, 0);
             m_EventListener.Verify();
         }

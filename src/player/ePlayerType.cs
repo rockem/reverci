@@ -3,6 +3,9 @@
     public enum ePlayerType
     {
         Human,
-        Computer
+        DumbComputer,
+        OkComputer,
+        SmartComputer,
+        GeniusComputer
     }
 }

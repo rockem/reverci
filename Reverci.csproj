@@ -14,8 +14,7 @@
     <FileAlignment>512</FileAlignment>
     <StartupObject>
     </StartupObject>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Othello.ico</ApplicationIcon>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -69,6 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\model\SquareTypeUtil.cs" />
+    <Compile Include="src\player\AbstractPlayer.cs" />
     <Compile Include="src\player\ComputerPlayer.cs" />
     <Compile Include="src\comp\BoardController.cs" />
     <Compile Include="src\player\ePlayerType.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="src\comp\StatisticsController.cs" />
     <Compile Include="src\ObjectIO.cs" />
     <Compile Include="src\player\PlayerFactory.cs" />
+    <Compile Include="src\player\SmartComputerPlayer.cs" />
     <Compile Include="src\SavedGame.cs" />
     <Compile Include="src\StatisticsHolder.cs" />
     <Compile Include="src\comp\StatusController.cs" />
@@ -146,6 +148,7 @@
     <Compile Include="test\comp\BoardControllerTest.cs" />
     <Compile Include="test\model\OthelloBoardModelTest.cs" />
     <Compile Include="test\comp\StateControllerTest.cs" />
+    <Compile Include="test\player\SmartPlayerTest.cs" />
     <Compile Include="test\StatisticsHolderTest.cs" />
     <Compile Include="test\comp\StatusControllerTest.cs" />
   </ItemGroup>
