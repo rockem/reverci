@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
 using Reverci.model;
 
 namespace Reverci.player
@@ -24,6 +25,7 @@ namespace Reverci.player
 
         public override Point GetMove()
         {
+            Thread.Sleep(200);
             var possibleMoves = shuffleList(getBoardModel().GetPossibleMovesFor(getColor()));
             var bestMove = possibleMoves[0];
             var result = MINUS_INF;

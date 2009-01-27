@@ -63,8 +63,8 @@ namespace Reverci.comp
                 OthelloData.GetInstance().Statistics.AddGameScore(
                     blackCount,
                     whiteCount,
-                    ePlayerType.Human,
-                    ePlayerType.Human);
+                    OthelloData.GetInstance().OthelloOptions.BlackPlayer,
+                    OthelloData.GetInstance().OthelloOptions.WhitePlayer);
             }
             else if (getCurrentPlayerColor() == eSquareType.Black)
             {

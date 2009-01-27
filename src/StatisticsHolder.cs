@@ -48,7 +48,8 @@ namespace Reverci
                 BnWDraws++;
             }
 
-            if (i_BlackPlayer != i_WhitePlayer)
+            if ((i_BlackPlayer == ePlayerType.Human || i_WhitePlayer == ePlayerType.Human) &&  
+                i_BlackPlayer != i_WhitePlayer)
             {
                 updateVsComputerWins(i_BlackScore, i_WhiteScore, i_BlackPlayer, i_WhitePlayer);
                 updateVsComputerScore(i_BlackScore, i_WhiteScore, i_BlackPlayer);
@@ -57,15 +58,15 @@ namespace Reverci
 
         private void updateVsComputerScore(int i_BlackScore, int i_WhiteScore, ePlayerType i_BlackPlayer)
         {
-            if (i_BlackPlayer == ePlayerType.DumbComputer)
-            {
-                CompuerScore += i_BlackScore;
-                HumanScore += i_WhiteScore;
-            }
-            else
+            if (i_BlackPlayer == ePlayerType.Human)
             {
                 HumanScore += i_BlackScore;
                 CompuerScore += i_WhiteScore;
+            }
+            else
+            {
+                CompuerScore += i_BlackScore;
+                HumanScore += i_WhiteScore;
             }
         }
 
@@ -91,13 +92,13 @@ namespace Reverci
 
         private void updatePlayerWins(ePlayerType player)
         {
-            if (player == ePlayerType.DumbComputer)
+            if (player == ePlayerType.Human)
             {
-                ComputerWins++;
+                HumanWins++;
             }
             else
             {
-                HumanWins++;
+                ComputerWins++;
             }
         }
 
