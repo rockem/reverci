@@ -156,7 +156,7 @@
             this.labelComputerTotal.Name = "labelComputerTotal";
             this.labelComputerTotal.Size = new System.Drawing.Size(55, 13);
             this.labelComputerTotal.TabIndex = 7;
-            this.labelComputerTotal.Text = "DumbComputer:";
+            this.labelComputerTotal.Text = "Computer:";
             // 
             // groupBoxOverall
             // 
@@ -305,7 +305,7 @@
             this.groupBoxVsComputer.Size = new System.Drawing.Size(275, 120);
             this.groupBoxVsComputer.TabIndex = 9;
             this.groupBoxVsComputer.TabStop = false;
-            this.groupBoxVsComputer.Text = "vs. DumbComputer";
+            this.groupBoxVsComputer.Text = "vs. Computer";
             // 
             // labelComputerWins
             // 
@@ -314,7 +314,7 @@
             this.labelComputerWins.Name = "labelComputerWins";
             this.labelComputerWins.Size = new System.Drawing.Size(79, 13);
             this.labelComputerWins.TabIndex = 0;
-            this.labelComputerWins.Text = "DumbComputer wins:";
+            this.labelComputerWins.Text = "Computer wins:";
             // 
             // FormsStatisticsView
             // 
