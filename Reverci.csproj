@@ -146,8 +146,9 @@
     <Compile Include="src\OthelloData.cs" />
     <Compile Include="src\view\StatusMessages.cs" />
     <Compile Include="test\comp\BoardControllerTest.cs" />
-    <Compile Include="test\model\OthelloBoardModelTest.cs" />
+    <Compile Include="test\model\ReverciBoardModelTest.cs" />
     <Compile Include="test\comp\StateControllerTest.cs" />
+    <Compile Include="test\model\ReverciBoardModelTest_MakeMove.cs" />
     <Compile Include="test\player\SmartPlayerTest.cs" />
     <Compile Include="test\StatisticsHolderTest.cs" />
     <Compile Include="test\comp\StatusControllerTest.cs" />
@@ -159,18 +160,23 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\view\forms\FormsBoardView.resx">
       <DependentUpon>FormsBoardView.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="src\view\forms\BoardSquare.resx">
       <DependentUpon>BoardSquare.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="src\view\forms\FormsGameView.resx">
       <DependentUpon>FormsGameView.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="src\view\forms\FormsStatisticsView.resx">
       <DependentUpon>FormsStatisticsView.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="src\view\forms\FormsStatusView.resx">
       <DependentUpon>FormsStatusView.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -38,7 +38,7 @@ namespace Reverci.model
             }
         }
 
-        private abstract class ScanCommand
+        private abstract class ScanTemplate
         {
             protected struct Direction
             {
@@ -50,7 +50,7 @@ namespace Reverci.model
             private readonly ReverciBoardModel r_BoardModel;
             private readonly eSquareType r_Color;
 
-            protected ScanCommand(ReverciBoardModel i_BoardModel, eSquareType i_Color)
+            protected ScanTemplate(ReverciBoardModel i_BoardModel, eSquareType i_Color)
             {
                 r_BoardModel = i_BoardModel;
                 r_Color = i_Color;
@@ -113,9 +113,9 @@ namespace Reverci.model
             }
         }
 
-        private class ScanForwardCommand : ScanCommand
+        private class ScanForwardTemplate : ScanTemplate
         {
-            public ScanForwardCommand(ReverciBoardModel i_BoardModel, eSquareType i_Color) :
+            public ScanForwardTemplate(ReverciBoardModel i_BoardModel, eSquareType i_Color) :
                 base(i_BoardModel, i_Color)
             {
             }
@@ -132,13 +132,13 @@ namespace Reverci.model
 
             protected override bool isInBounds(int x, int y)
             {
-                return x < maxPosition() && y < maxPosition();
+                return x <= maxPosition() && y <= maxPosition();
             }
         }
 
-        private class ScanBackwardCommand : ScanCommand
+        private class ScanBackwardTemplate : ScanTemplate
         {
-            public ScanBackwardCommand(ReverciBoardModel i_BoardModel, eSquareType i_Color) :
+            public ScanBackwardTemplate(ReverciBoardModel i_BoardModel, eSquareType i_Color) :
                 base(i_BoardModel, i_Color)
             {
             }
@@ -159,9 +159,9 @@ namespace Reverci.model
             }
         }
 
-        private class ScanDownBackDiagonalCommand : ScanCommand
+        private class ScanDownBackDiagonalTemplate : ScanTemplate
         {
-            public ScanDownBackDiagonalCommand(ReverciBoardModel i_BoardModel, eSquareType i_Color) :
+            public ScanDownBackDiagonalTemplate(ReverciBoardModel i_BoardModel, eSquareType i_Color) :
                 base(i_BoardModel, i_Color)
             {
             }
@@ -180,9 +180,9 @@ namespace Reverci.model
             }
         }
 
-        private class ScanUpForwardDiagonalCommand : ScanCommand
+        private class ScanUpForwardDiagonalTemplate : ScanTemplate
         {
-            public ScanUpForwardDiagonalCommand(ReverciBoardModel i_BoardModel, eSquareType i_Color) :
+            public ScanUpForwardDiagonalTemplate(ReverciBoardModel i_BoardModel, eSquareType i_Color) :
                 base(i_BoardModel, i_Color)
             {
             }
@@ -204,10 +204,10 @@ namespace Reverci.model
         private List<Point> whoCanIEatFrom(int i_X, int i_Y, eSquareType i_Color)
         {
             var listToEat = new List<Point>();
-            listToEat.AddRange(new ScanForwardCommand(this, i_Color).whoToEatFrom(i_X, i_Y));
-            listToEat.AddRange(new ScanBackwardCommand(this, i_Color).whoToEatFrom(i_X, i_Y));
-            listToEat.AddRange(new ScanDownBackDiagonalCommand(this, i_Color).whoToEatFrom(i_X, i_Y));
-            listToEat.AddRange(new ScanUpForwardDiagonalCommand(this, i_Color).whoToEatFrom(i_X, i_Y));
+            listToEat.AddRange(new ScanForwardTemplate(this, i_Color).whoToEatFrom(i_X, i_Y));
+            listToEat.AddRange(new ScanBackwardTemplate(this, i_Color).whoToEatFrom(i_X, i_Y));
+            listToEat.AddRange(new ScanDownBackDiagonalTemplate(this, i_Color).whoToEatFrom(i_X, i_Y));
+            listToEat.AddRange(new ScanUpForwardDiagonalTemplate(this, i_Color).whoToEatFrom(i_X, i_Y));
 
             return listToEat;
         }
