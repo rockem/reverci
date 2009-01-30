@@ -1,7 +1,8 @@
 ﻿using NUnit.Framework;
+using Reverci;
 using Reverci.player;
 
-namespace Reverci
+namespace ReverciUT
 {
     [TestFixture]
     public class StatisticsHolderTest

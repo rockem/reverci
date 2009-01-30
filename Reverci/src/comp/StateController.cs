@@ -3,7 +3,7 @@ using Reverci.view;
 
 namespace Reverci.comp
 {
-    internal class StateController
+    public class StateController
     {
         private readonly IStateView r_StateView;
 
