@@ -10,7 +10,7 @@ Name Reverci
 !define URL http://code.google.com/p/reverci/
 
 # MUI Symbol Definitions
-!define MUI_ICON ..\Othello.ico
+!define MUI_ICON ..\Reverci\Othello.ico
 !define MUI_FINISHPAGE_NOAUTOCLOSE
 !define MUI_LICENSEPAGE_CHECKBOX
 !define MUI_FINISHPAGE_RUN $INSTDIR\Reverci.exe
@@ -55,7 +55,7 @@ ShowUninstDetails show
 Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
-    File ..\bin\Release\Reverci.exe
+    File ..\Reverci\bin\Release\Reverci.exe
     File ..\LICENSE.TXT
     WriteRegStr HKLM "${REGKEY}\Components" Main 1
 SectionEnd
