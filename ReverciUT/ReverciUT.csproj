@@ -59,7 +59,7 @@
     <Compile Include="src\StatisticsHolderTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Reverci.csproj">
+    <ProjectReference Include="..\Reverci\Reverci.csproj">
       <Project>{CDB86080-9CB2-48B9-9142-0269520C3877}</Project>
       <Name>Reverci</Name>
     </ProjectReference>
