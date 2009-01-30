@@ -15,24 +15,24 @@ namespace Reverci.model
             r_BoardSize = r_BoardData.Length;
         }
 
-        public void MakeMove(int x, int y, eSquareType i_Color)
+        public void MakeMove(int i_X, int i_Y, eSquareType i_Color)
         {
-            validateMove(x, y, i_Color);
-            r_BoardData[x][y] = i_Color;
-            eatOtherColorFrom(x, y, i_Color);
+            validateMove(i_X, i_Y, i_Color);
+            r_BoardData[i_X][i_Y] = i_Color;
+            eatOtherColorFrom(i_X, i_Y, i_Color);
         }
 
-        private void validateMove(int x, int y, eSquareType i_Color)
+        private void validateMove(int i_X, int i_Y, eSquareType i_Color)
         {
-            if (!thereIsSomethingToEatOn(x, y, i_Color))
+            if (!thereIsSomethingToEatOn(i_X, i_Y, i_Color))
             {
                 throw new NonValidMoveException();
             }
         }
 
-        private void eatOtherColorFrom(int x, int y, eSquareType i_Color)
+        private void eatOtherColorFrom(int i_X, int i_Y, eSquareType i_Color)
         {
-            foreach (var position in whoCanIEatFrom(x, y, i_Color))
+            foreach (var position in whoCanIEatFrom(i_X, i_Y, i_Color))
             {
                 r_BoardData[position.X][position.Y] = i_Color;
             }

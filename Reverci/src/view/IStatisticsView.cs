@@ -22,6 +22,6 @@
 
         void setHumanScore(int i_Score);
 
-        void Show(int x, int y);
+        void Show(int i_X, int i_Y);
     }
 }

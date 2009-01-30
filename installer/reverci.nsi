@@ -5,7 +5,7 @@ Name Reverci
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 3-1
+!define VERSION 3-3
 !define COMPANY ""
 !define URL http://code.google.com/p/reverci/
 

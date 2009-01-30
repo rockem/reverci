@@ -2,10 +2,10 @@
 {
     public interface IBoardViewEventListener : IEventListener
     {
-        void DispatchMove(int x, int y);
+        void DispatchMove(int i_X, int i_Y);
 
-        void DispatchLeaveSquare(int x, int y);
+        void DispatchLeaveSquare(int i_X, int i_Y);
 
-        void DispatchEnterSquare(int x, int y);
+        void DispatchEnterSquare(int i_X, int i_Y);
     }
 }

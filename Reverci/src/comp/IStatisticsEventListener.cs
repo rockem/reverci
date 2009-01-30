@@ -1,6 +1,6 @@
 ﻿using Reverci.comp;
 
-namespace Othello.comp
+namespace Reverci.comp
 {
     public interface IStatisticsEventListener : IEventListener
     {
