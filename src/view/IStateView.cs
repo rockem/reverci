@@ -1,6 +1,6 @@
 ﻿namespace Reverci.view
 {
-    internal interface IStateView
+    public interface IStateView
     {
         void updateStatusMessageWith(string i_Status);
 

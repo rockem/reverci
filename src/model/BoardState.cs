@@ -1,6 +1,6 @@
 ﻿namespace Reverci.model
 {
-    internal class BoardState
+    public class BoardState
     {
         public static eSquareType[][] CreateInitialBoardWithSize(int i_BoardSize)
         {

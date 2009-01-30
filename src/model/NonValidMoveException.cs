@@ -2,7 +2,7 @@
 
 namespace Reverci.model
 {
-    internal class NonValidMoveException : Exception
+    public class NonValidMoveException : Exception
     {
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Reverci.view
 {
-    internal class StatusMessages
+    public class StatusMessages
     {
         public static readonly string BlackTurnMessage = "Black's move ..";
         public static readonly string WhiteTurnMessage = "White's move ..";

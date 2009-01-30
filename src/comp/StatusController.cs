@@ -4,7 +4,7 @@ using Reverci.view;
 
 namespace Reverci.comp
 {
-    internal class StatusController
+    public class StatusController
     {
         private readonly IStatusView r_StatusView;
 

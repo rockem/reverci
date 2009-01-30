@@ -2,7 +2,7 @@
 
 namespace Reverci
 {
-    internal class OthelloData
+    public class OthelloData
     {
         private static readonly string r_AppDirectory =
             Environment.GetEnvironmentVariable("USERPROFILE") + "/" + ".othello";
