@@ -26,7 +26,7 @@ namespace Reverci.player
         public override Point GetMove()
         {
             Thread.Sleep(200);
-            var possibleMoves = shuffleList(getBoardModel().GetPossibleMovesFor(getColor()));
+            var possibleMoves = createShuffeldListFrom(getBoardModel().GetPossibleMovesFor(getColor()));
             var bestMove = possibleMoves[0];
             var result = MINUS_INF;
             foreach (var move in possibleMoves)
@@ -42,7 +42,7 @@ namespace Reverci.player
             return bestMove;
         }
 
-        private List<Point> shuffleList(IList<Point> i_List)
+        private List<Point> createShuffeldListFrom(IList<Point> i_List)
         {
             var randomContext = new Random();
             var count = i_List.Count;

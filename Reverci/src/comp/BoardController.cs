@@ -76,11 +76,11 @@ namespace Reverci.comp
             }
         }
 
-        public void DispatchMove(int x, int y)
+        public void DispatchMove(int i_X, int i_Y)
         {
             if (!m_LockHumanPlay)
             {
-                handleMove(x, y);
+                handleMove(i_X, i_Y);
                 automaticPlay();
             }
         }
@@ -92,20 +92,20 @@ namespace Reverci.comp
                 m_BoardModel.GetPieceCountOfType(eSquareType.White));
         }
 
-        public void DispatchLeaveSquare(int x, int y)
+        public void DispatchLeaveSquare(int i_X, int i_Y)
         {
             updateView();
         }
 
-        public void DispatchEnterSquare(int x, int y)
+        public void DispatchEnterSquare(int i_X, int i_Y)
         {
             if (getGameOptions().ShowPreview)
             {
-                var previewPoints = m_BoardModel.GetPreviewFor(x, y, getCurrentPlayerColor());
+                var previewPoints = m_BoardModel.GetPreviewFor(i_X, i_Y, getCurrentPlayerColor());
                 if (previewPoints.Count > 0)
                 {
-                    previewPoints.Insert(0, new Point(x, y));
-                    r_BoardView.addPreview(previewPoints, getCurrentPlayerColor());
+                    previewPoints.Insert(0, new Point(i_X, i_Y));
+                    r_BoardView.AddPreview(previewPoints, getCurrentPlayerColor());
                 }
             }
         }
@@ -118,7 +118,7 @@ namespace Reverci.comp
                 addPossibleMovesOn(board);
             }
 
-            r_BoardView.updateBoardWith(board);
+            r_BoardView.UpdateBoardWith(board);
         }
 
         private void addPossibleMovesOn(eSquareType[][] board)

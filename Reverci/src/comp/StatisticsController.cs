@@ -1,5 +1,4 @@
-﻿using Othello.comp;
-using Reverci.view;
+﻿using Reverci.view;
 
 namespace Reverci.comp
 {
