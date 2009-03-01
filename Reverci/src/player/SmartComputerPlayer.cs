@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
+using Reverci.board;
 using Reverci.model;
 
 namespace Reverci.player
@@ -57,7 +58,7 @@ namespace Reverci.player
             return newList;
         }
 
-        private int alphaBeta(eSquareType[][] i_Board, eSquareType i_Color, Point i_Move, int i_Depth, int a, int b)
+        private int alphaBeta(eCoinType[][] i_Board, eCoinType i_Color, Point i_Move, int i_Depth, int a, int b)
         {
             var model = new ReverciBoardModel(i_Board);
             model.MakeMove(i_Move.X, i_Move.Y, i_Color);

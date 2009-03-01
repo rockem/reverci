@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using Reverci.board;
 
 namespace Reverci.model
 {
     public interface IBoardModel
     {
-        void MakeMove(int i_X, int i_Y, eSquareType i_Color);
+        void MakeMove(int i_X, int i_Y, eCoinType i_Color);
 
-        eSquareType[][] GetBoard();
+        eCoinType[][] GetBoard();
 
-        List<Point> GetPossibleMovesFor(eSquareType i_Color);
+        List<Point> GetPossibleMovesFor(eCoinType i_Color);
 
-        List<Point> GetPreviewFor(int i_X, int i_Y, eSquareType i_Color);
+        List<Point> GetPreviewFor(int i_X, int i_Y, eCoinType i_Color);
 
-        int GetPieceCountOfType(eSquareType i_PieceType);
+        int GetPieceCountOfType(eCoinType i_PieceType);
     }
 }

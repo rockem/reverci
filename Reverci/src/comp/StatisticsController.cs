@@ -9,7 +9,7 @@ namespace Reverci.comp
         public StatisticsController(IStatisticsView i_View)
         {
             r_StatisticsView = i_View;
-            i_View.setEventListener(this);
+            i_View.SetEventListener(this);
         }
 
         public void ShowStatisticsView(int i_MiddleX, int i_MiddleY)

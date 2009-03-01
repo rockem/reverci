@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+using Reverci.board;
 using Reverci.model;
 using Reverci.player;
 using Reverci.view;
@@ -11,23 +12,23 @@ namespace Reverci.comp
     public class BoardController : IBoardViewEventListener
     {
         private readonly IBoardView r_BoardView;
-        private readonly Dictionary<eSquareType, IPlayer> r_Players = new Dictionary<eSquareType, IPlayer>();
+        private readonly Dictionary<eCoinType, IPlayer> r_Players = new Dictionary<eCoinType, IPlayer>();
         private IBoardModel m_BoardModel;
         private IBoardEventListener m_EventListener = new DummyBoardEventListener();
-        private eSquareType m_CurrentPlayer;
+        private eCoinType m_CurrentPlayer;
         private bool m_LockHumanPlay;
         private Point m_LastMove;
 
         public BoardController(IBoardView i_View)
         {
             r_BoardView = i_View;
-            r_BoardView.setEventListener(this);
+            r_BoardView.SetEventListener(this);
             initializeCurrentPlayer();
         }
 
         private void initializeCurrentPlayer()
         {
-            m_CurrentPlayer = eSquareType.Black;
+            m_CurrentPlayer = eCoinType.Black;
         }
 
         public IBoardView GetView()
@@ -45,8 +46,8 @@ namespace Reverci.comp
         {
             if (m_BoardModel.GetPossibleMovesFor(getCurrentPlayerColor()).Count == 0)
             {
-                var blackCount = m_BoardModel.GetPieceCountOfType(eSquareType.Black);
-                var whiteCount = m_BoardModel.GetPieceCountOfType(eSquareType.White);
+                var blackCount = m_BoardModel.GetPieceCountOfType(eCoinType.Black);
+                var whiteCount = m_BoardModel.GetPieceCountOfType(eCoinType.White);
                 if (blackCount > whiteCount)
                 {
                     m_EventListener.DispatchCurrentState(eStateType.BlackWin);
@@ -66,7 +67,7 @@ namespace Reverci.comp
                     OthelloData.GetInstance().OthelloOptions.BlackPlayer,
                     OthelloData.GetInstance().OthelloOptions.WhitePlayer);
             }
-            else if (getCurrentPlayerColor() == eSquareType.Black)
+            else if (getCurrentPlayerColor() == eCoinType.Black)
             {
                 m_EventListener.DispatchCurrentState(eStateType.BlackTurn);
             }
@@ -88,8 +89,8 @@ namespace Reverci.comp
         private void dispathPieceQuantity()
         {
             m_EventListener.DispatchPieceQuantity(
-                m_BoardModel.GetPieceCountOfType(eSquareType.Black),
-                m_BoardModel.GetPieceCountOfType(eSquareType.White));
+                m_BoardModel.GetPieceCountOfType(eCoinType.Black),
+                m_BoardModel.GetPieceCountOfType(eCoinType.White));
         }
 
         public void DispatchLeaveSquare(int i_X, int i_Y)
@@ -121,11 +122,11 @@ namespace Reverci.comp
             r_BoardView.UpdateBoardWith(board);
         }
 
-        private void addPossibleMovesOn(eSquareType[][] board)
+        private void addPossibleMovesOn(eCoinType[][] board)
         {
             foreach (var move in m_BoardModel.GetPossibleMovesFor(getCurrentPlayerColor()))
             {
-                board[move.X][move.Y] = eSquareType.Move;
+                board[move.X][move.Y] = eCoinType.Move;
             }
         }
 
@@ -152,15 +153,15 @@ namespace Reverci.comp
 
         public void setPlayers(IPlayer i_BlackPlayer, IPlayer i_WhitePlayer)
         {
-            r_Players[eSquareType.Black] = setupPlayer(i_BlackPlayer, eSquareType.Black);
-            r_Players[eSquareType.White] = setupPlayer(i_WhitePlayer, eSquareType.White);
+            r_Players[eCoinType.Black] = setupPlayer(i_BlackPlayer, eCoinType.Black);
+            r_Players[eCoinType.White] = setupPlayer(i_WhitePlayer, eCoinType.White);
             updateView();
             dispatchCurrentState();
             dispathPieceQuantity();
             automaticPlay();
         }
 
-        private IPlayer setupPlayer(IPlayer i_BlackPlayer, eSquareType i_Color)
+        private IPlayer setupPlayer(IPlayer i_BlackPlayer, eCoinType i_Color)
         {
             var player = i_BlackPlayer;
             player.setColor(i_Color);
@@ -219,14 +220,14 @@ namespace Reverci.comp
             return m_BoardModel.GetPossibleMovesFor(getCurrentPlayerColor()).Count > 0;
         }
 
-        private eSquareType getCurrentPlayerColor()
+        private eCoinType getCurrentPlayerColor()
         {
             return r_Players[m_CurrentPlayer].getColor();
         }
 
         internal class DummyBoardEventListener : IBoardEventListener
         {
-            public void DispatchLastMove(int i_X, int i_Y, eSquareType i_Color)
+            public void DispatchLastMove(int i_X, int i_Y, eCoinType i_Color)
             {
             }
 
@@ -244,14 +245,21 @@ namespace Reverci.comp
             return m_BoardModel;
         }
 
-        public void setCurrentPlayer(eSquareType i_Player)
+        public void setCurrentPlayer(eCoinType i_Player)
         {
             m_CurrentPlayer = i_Player;
         }
 
-        public eSquareType getCurrentPlayer()
+        public eCoinType getCurrentPlayer()
         {
             return m_CurrentPlayer;
+        }
+
+        public void UpdatePlayers()
+        {
+            setPlayers(
+                PlayerFactory.createPlayerOfType(OthelloData.GetInstance().OthelloOptions.BlackPlayer),
+                PlayerFactory.createPlayerOfType(OthelloData.GetInstance().OthelloOptions.WhitePlayer));
         }
     }
 }

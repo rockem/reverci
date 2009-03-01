@@ -1,17 +1,19 @@
-﻿namespace Reverci.model
+﻿using Reverci.board;
+
+namespace Reverci.model
 {
     internal class SquareTypeUtil
     {
-        public static eSquareType GetOtherColor(eSquareType i_Color)
+        public static eCoinType GetOtherColor(eCoinType i_Color)
         {
-            eSquareType color;
-            if (i_Color == eSquareType.Black)
+            eCoinType color;
+            if (i_Color == eCoinType.Black)
             {
-                color = eSquareType.White;
+                color = eCoinType.White;
             }
             else
             {
-                color = eSquareType.Black;
+                color = eCoinType.Black;
             }
 
             return color;

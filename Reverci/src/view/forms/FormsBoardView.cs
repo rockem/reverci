@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Reverci.board;
 using Reverci.comp;
-using Reverci.model;
 
 namespace Reverci.view.forms
 {
@@ -28,10 +28,10 @@ namespace Reverci.view.forms
                 {
                     var boardSquare = new BoardSquare
                                           {
-                                              PieceType = eSquareType.Empty,
+                                              PieceType = eCoinType.Empty,
                                               Position = new Point(i, j)
                                           };
-                    boardSquare.setEventListener(this);
+                    boardSquare.SetEventListener(this);
                     Controls.Add(boardSquare);
                     boardSquares[i][j] = boardSquare;
                 }
@@ -40,7 +40,7 @@ namespace Reverci.view.forms
             return boardSquares;
         }
 
-        public void UpdateBoardWith(eSquareType[][] i_BoardData)
+        public void UpdateBoardWith(eCoinType[][] i_BoardData)
         {
             if (i_BoardData.Length != s_BoardSize)
             {
@@ -53,7 +53,7 @@ namespace Reverci.view.forms
                 for (var j = 0; j < s_BoardSize; j++)
                 {
                     m_ControlSquares[i][j].PieceType = i_BoardData[i][j];
-                    if (m_ControlSquares[i][j].PieceType == eSquareType.Move)
+                    if (m_ControlSquares[i][j].PieceType == eCoinType.Move)
                     {
                         m_ControlSquares[i][j].BackgroundType = eBackType.ValidMove;
                     }
@@ -111,12 +111,12 @@ namespace Reverci.view.forms
 
         private delegate void RefreshDelegator();
 
-        public void setEventListener(IEventListener i_Listener)
+        public void SetEventListener(IEventListener i_Listener)
         {
             m_ViewEventListener = (IBoardViewEventListener)i_Listener;
         }
 
-        public void AddPreview(List<Point> i_Points, eSquareType i_Color)
+        public void AddPreview(List<Point> i_Points, eCoinType i_Color)
         {
             if (i_Points.Count > 0)
             {
@@ -131,14 +131,14 @@ namespace Reverci.view.forms
             refreshView();
         }
 
-        private eSquareType shadowColorFor(eSquareType color)
+        private eCoinType shadowColorFor(eCoinType color)
         {
-            if (color == eSquareType.Black)
+            if (color == eCoinType.Black)
             {
-                return eSquareType.ShadowBlack;
+                return eCoinType.ShadowBlack;
             }
 
-            return eSquareType.ShadowWhite;
+            return eCoinType.ShadowWhite;
         }
 
         public void DispatchClick(int x, int y)

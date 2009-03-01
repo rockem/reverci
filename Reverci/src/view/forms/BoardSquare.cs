@@ -2,8 +2,8 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using Reverci.board;
 using Reverci.comp;
-using Reverci.model;
 
 namespace Reverci.view.forms
 {
@@ -19,7 +19,7 @@ namespace Reverci.view.forms
         private static readonly Color r_MoveBackColor = Color.DarkOliveGreen;
         private ISquareListener m_ViewEventListener;
         private Color m_BackgroundColor;
-        private eSquareType m_PieceType;
+        private eCoinType m_PieceType;
         private eBackType m_BackgroundType;
 
         public BoardSquare()
@@ -36,7 +36,7 @@ namespace Reverci.view.forms
             SetStyle(ControlStyles.DoubleBuffer, true);
         }
 
-        public eSquareType PieceType
+        public eCoinType PieceType
         {
             get { return m_PieceType; }
             set { m_PieceType = value; }
@@ -62,7 +62,7 @@ namespace Reverci.view.forms
 
             drawSquareBorder(e);
 
-            if (m_PieceType != eSquareType.Empty && m_PieceType != eSquareType.Move)
+            if (m_PieceType != eCoinType.Empty && m_PieceType != eCoinType.Move)
             {
                 drawBoardPiece(e);
             }
@@ -124,9 +124,9 @@ namespace Reverci.view.forms
 
         private void setPieceColor(PathGradientBrush gradientBrush, SolidBrush solidBrush)
         {
-            if (m_PieceType == eSquareType.White || m_PieceType == eSquareType.ShadowWhite)
+            if (m_PieceType == eCoinType.White || m_PieceType == eCoinType.ShadowWhite)
             {
-                if (m_PieceType == eSquareType.ShadowWhite)
+                if (m_PieceType == eCoinType.ShadowWhite)
                 {
                     solidBrush.Color = Color.FromArgb(96, adjustBrightness(Color.White, 0.80));
                 }
@@ -140,7 +140,7 @@ namespace Reverci.view.forms
             }
             else
             {
-                if (m_PieceType == eSquareType.ShadowBlack)
+                if (m_PieceType == eCoinType.ShadowBlack)
                 {
                     solidBrush.Color = Color.FromArgb(96, Color.Black);
                 }
@@ -152,7 +152,7 @@ namespace Reverci.view.forms
                 gradientBrush.CenterColor = Color.FromArgb(128, Color.DarkGray);
             }
 
-            if (m_PieceType == eSquareType.ShadowWhite || m_PieceType == eSquareType.ShadowBlack)
+            if (m_PieceType == eCoinType.ShadowWhite || m_PieceType == eCoinType.ShadowBlack)
             {
                 solidBrush.Color = Color.Gray;
             }
@@ -167,7 +167,7 @@ namespace Reverci.view.forms
             return Color.FromArgb(r, g, b);
         }
 
-        public void setEventListener(IEventListener i_listener)
+        public void SetEventListener(IEventListener i_listener)
         {
             m_ViewEventListener = (ISquareListener)i_listener;
         }

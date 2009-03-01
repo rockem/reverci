@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using Reverci.model;
+using Reverci.board;
 
 namespace Reverci
 {
     [Serializable]
     public class SavedGame
     {
-        public eSquareType CurrentTurn { get; set; }
+        public eCoinType CurrentTurn { get; set; }
 
-        public eSquareType[][] Board { get; set; }
+        public eCoinType[][] Board { get; set; }
 
         public List<string[]> MovesHistory { get; set; }
     }

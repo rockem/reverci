@@ -3,6 +3,7 @@ using System.Drawing;
 using NUnit.Framework;
 using NUnit.Mocks;
 using Reverci;
+using Reverci.board;
 using Reverci.comp;
 using Reverci.model;
 using Reverci.player;
@@ -13,7 +14,7 @@ namespace ReverciUT.comp
     [TestFixture]
     public class BoardControllerTest
     {
-        private readonly eSquareType[][] r_ExpectedData = BoardState.CreateInitialBoardWithSize(4);
+        private readonly eCoinType[][] r_ExpectedData = ReverciBoardBuilder.CreateInitialBoardWithSize(4);
         private StubBoardView m_BoardView;
         private BoardController m_BoardController;
         private DynamicMock m_MockModel;
@@ -22,24 +23,24 @@ namespace ReverciUT.comp
 
         private class StubBoardView : IBoardView
         {
-            public eSquareType[][] m_Data;
+            public eCoinType[][] m_Data;
             public IBoardViewEventListener m_Listener;
             public bool m_BoardWasUpdated;
             public List<Point> m_PreviewPoints;
-            public eSquareType m_PreviewColor;
+            public eCoinType m_PreviewColor;
 
-            public void UpdateBoardWith(eSquareType[][] i_BoardData)
+            public void UpdateBoardWith(eCoinType[][] i_BoardData)
             {
                 m_Data = i_BoardData;
                 m_BoardWasUpdated = true;
             }
 
-            public void setEventListener(IEventListener i_Listener)
+            public void SetEventListener(IEventListener i_Listener)
             {
                 m_Listener = (IBoardViewEventListener)i_Listener;
             }
 
-            public void AddPreview(List<Point> i_Points, eSquareType i_Color)
+            public void AddPreview(List<Point> i_Points, eCoinType i_Color)
             {
                 m_PreviewPoints = i_Points;
                 m_PreviewColor = i_Color;
@@ -52,9 +53,9 @@ namespace ReverciUT.comp
 
         private class StubPlayer : IPlayer
         {
-            private eSquareType m_Color;
+            private eCoinType m_Color;
 
-            public void setColor(eSquareType i_Color)
+            public void setColor(eCoinType i_Color)
             {
                 m_Color = i_Color;
             }
@@ -73,7 +74,7 @@ namespace ReverciUT.comp
                 return new Point(0, 0);
             }
 
-            public eSquareType getColor()
+            public eCoinType getColor()
             {
                 return m_Color;
             }
@@ -89,7 +90,7 @@ namespace ReverciUT.comp
             m_BoardController = new BoardController(m_BoardView);
             m_MockModel.SetReturnValue("GetPossibleMovesFor", m_PossibleMoves);
             m_MockModel.SetReturnValue("GetBoard", r_ExpectedData);
-            m_MockModel.SetReturnValue("GetCurrentColor", eSquareType.Black);
+            m_MockModel.SetReturnValue("GetCurrentColor", eCoinType.Black);
             m_EventListener = new DynamicMock(typeof (IBoardEventListener));
             m_BoardController.setEventListener((IBoardEventListener)m_EventListener.MockInstance);
             m_BoardController.SetModel((IBoardModel)m_MockModel.MockInstance);
@@ -106,7 +107,7 @@ namespace ReverciUT.comp
         public void testShouldDelegateToModel()
         {
             m_MockModel.Expect("MakeMove",
-                               new object[] { m_PossibleMoves[0].X, m_PossibleMoves[0].Y, eSquareType.Black });
+                               new object[] { m_PossibleMoves[0].X, m_PossibleMoves[0].Y, eCoinType.Black });
             m_BoardView.m_Listener.DispatchMove(m_PossibleMoves[0].X, m_PossibleMoves[0].Y);
             m_MockModel.Verify();
         }
@@ -130,7 +131,7 @@ namespace ReverciUT.comp
         public void testShouldDelegatePossibleMovesToView()
         {
             m_BoardController.EnablePossibleMoves(true);
-            Assert.AreEqual(eSquareType.Move, m_BoardView.m_Data[m_PossibleMoves[0].X][m_PossibleMoves[0].Y]);
+            Assert.AreEqual(eCoinType.Move, m_BoardView.m_Data[m_PossibleMoves[0].X][m_PossibleMoves[0].Y]);
         }
 
         [Test]
@@ -140,7 +141,7 @@ namespace ReverciUT.comp
             var v_ExpectedMove = new Point(1, 1);
             m_PossibleMoves.Add(v_ExpectedMove);
             m_BoardController.DispatchMove(v_ExpectedMove.X, v_ExpectedMove.Y);
-            Assert.IsTrue(eSquareType.Move != m_BoardView.m_Data[v_ExpectedMove.X][v_ExpectedMove.Y]);
+            Assert.IsTrue(eCoinType.Move != m_BoardView.m_Data[v_ExpectedMove.X][v_ExpectedMove.Y]);
         }
 
         [Test]
@@ -152,7 +153,7 @@ namespace ReverciUT.comp
             v_ICanEatThese.Add(preview);
             var v_Move = new Point(3, 2);
             m_MockModel.ExpectAndReturn("GetPreviewFor", v_ICanEatThese,
-                                        new object[] { v_Move.X, v_Move.Y, eSquareType.Black });
+                                        new object[] { v_Move.X, v_Move.Y, eCoinType.Black });
             m_BoardView.m_Listener.DispatchEnterSquare(v_Move.X, v_Move.Y);
 
             Assert.AreEqual(v_Move, m_BoardView.m_PreviewPoints[0]);
@@ -174,7 +175,7 @@ namespace ReverciUT.comp
             m_BoardController.SetPreview(true);
             var v_Move = new Point(0, 0);
             m_MockModel.ExpectAndReturn("GetPreviewFor", new List<Point>(),
-                                        new object[] { v_Move.X, v_Move.Y, eSquareType.Black });
+                                        new object[] { v_Move.X, v_Move.Y, eCoinType.Black });
             m_BoardView.m_Listener.DispatchEnterSquare(v_Move.X, v_Move.Y);
             Assert.IsNull(m_BoardView.m_PreviewPoints);
         }
@@ -190,7 +191,7 @@ namespace ReverciUT.comp
         [Test]
         public void testShouldDelegteMoveToEventListener()
         {
-            m_EventListener.Expect("DispatchLastMove", new object[] { 0, 0, eSquareType.Black });
+            m_EventListener.Expect("DispatchLastMove", new object[] { 0, 0, eCoinType.Black });
             m_BoardController.DispatchMove(0, 0);
             m_EventListener.Verify();
         }
@@ -223,8 +224,8 @@ namespace ReverciUT.comp
         {
             var blackCount = 3;
             var whiteCount = 4;
-            m_MockModel.ExpectAndReturn("GetPieceCountOfType", blackCount, new object[] { eSquareType.Black });
-            m_MockModel.ExpectAndReturn("GetPieceCountOfType", whiteCount, new object[] { eSquareType.White });
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", blackCount, new object[] { eCoinType.Black });
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", whiteCount, new object[] { eCoinType.White });
             m_EventListener.Expect("DispatchPieceQuantity", new object[] { blackCount, whiteCount });
         }
 
@@ -242,10 +243,10 @@ namespace ReverciUT.comp
             m_MockModel.SetReturnValue("GetPossibleMovesFor", new List<Point>());
             m_EventListener.Expect("DispatchCurrentState", new object[] { eStateType.Draw });
             var count = 4;
-            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eSquareType.Black });
-            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eSquareType.White });
-            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eSquareType.Black });
-            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eSquareType.White });
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eCoinType.Black });
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eCoinType.White });
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eCoinType.Black });
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eCoinType.White });
             m_BoardController.DispatchMove(0, 0);
             m_EventListener.Verify();
         }
@@ -256,10 +257,10 @@ namespace ReverciUT.comp
             m_MockModel.SetReturnValue("GetPossibleMovesFor", new List<Point>());
             m_EventListener.Expect("DispatchCurrentState", new object[] { eStateType.WhiteWin });
             var count = 4;
-            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eSquareType.Black });
-            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count + 2, new object[] { eSquareType.White });
-            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eSquareType.Black });
-            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count + 2, new object[] { eSquareType.White });
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eCoinType.Black });
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count + 2, new object[] { eCoinType.White });
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eCoinType.Black });
+            m_MockModel.ExpectAndReturn("GetPieceCountOfType", count + 2, new object[] { eCoinType.White });
             m_BoardController.DispatchMove(0, 0);
             m_EventListener.Verify();
         }
@@ -269,9 +270,9 @@ namespace ReverciUT.comp
         {
             var myMove = new Point(1, 1);
             m_MockModel.ExpectAndReturn("MakeMove", null,
-                                        new object[] { myMove.X, myMove.Y, eSquareType.Black });
+                                        new object[] { myMove.X, myMove.Y, eCoinType.Black });
             m_MockModel.ExpectAndReturn("MakeMove", null,
-                                        new object[] { myMove.X, myMove.Y, eSquareType.White });
+                                        new object[] { myMove.X, myMove.Y, eCoinType.White });
             m_BoardController.DispatchMove(myMove.X, myMove.Y);
             m_BoardController.DispatchMove(myMove.X, myMove.Y);
             m_MockModel.Verify();
@@ -283,7 +284,7 @@ namespace ReverciUT.comp
             m_BoardController.DispatchMove(0, 0);
             m_BoardController.SetModel((IBoardModel)m_MockModel.MockInstance);
             m_MockModel.ExpectAndReturn("MakeMove", null,
-                                        new object[] { 0, 0, eSquareType.Black });
+                                        new object[] { 0, 0, eCoinType.Black });
             m_BoardController.DispatchMove(0, 0);
             m_MockModel.Verify();
         }

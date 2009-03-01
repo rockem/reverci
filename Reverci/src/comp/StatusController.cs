@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Reverci.model;
+using Reverci.board;
 using Reverci.view;
 
 namespace Reverci.comp
@@ -40,7 +40,7 @@ namespace Reverci.comp
             r_StatusView.UpdatePieceQuantity(i_BlackCount, i_WhiteCount);
         }
 
-        public void LogMove(int i_X, int i_Y, eSquareType i_Color)
+        public void LogMove(int i_X, int i_Y, eCoinType i_Color)
         {
             m_MovesList.Add(new[]
                                 {

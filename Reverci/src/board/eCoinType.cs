@@ -1,6 +1,6 @@
-﻿namespace Reverci.model
+﻿namespace Reverci.board
 {
-    public enum eSquareType
+    public enum eCoinType
     {
         Empty,
         White,

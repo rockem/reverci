@@ -34,32 +34,34 @@ namespace Reverci.view.forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormsGameView));
             this.m_MainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_NewGame = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_NewGame = new FormsToolstripMenuItemView();
+            this.m_SaveGame = new FormsToolstripMenuItemView();
+            this.m_LoadGame = new FormsToolstripMenuItemView();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.m_Statistics = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_Statistics = new FormsToolstripMenuItemView();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.m_Exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_Exit = new FormsToolstripMenuItemView();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_ShowValidMoves = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_PreviewMoves = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_ShowValidMoves = new FormsToolstripMenuItemView();
+            this.m_PreviewMoves = new FormsToolstripMenuItemView();
             this.playersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.blackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_BlackUser = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_BlackDumbComputer = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_BlackOkComputer = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_BlackSmartComputer = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_BlackGeniusComputer = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_BlackUser = new FormsToolstripMenuItemView();
+            this.m_BlackDumbComputer = new FormsToolstripMenuItemView();
+            this.m_BlackOkComputer = new FormsToolstripMenuItemView();
+            this.m_BlackSmartComputer = new FormsToolstripMenuItemView();
+            this.m_BlackGeniusComputer = new FormsToolstripMenuItemView();
             this.whiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_WhiteUser = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_WhiteDumbComputer = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_WhiteOkComputer = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_WhiteSmartComputer = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_WhiteGeniusComputer = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_StateBar = new Reverci.view.forms.FormsStateView();
+            this.m_WhiteUser = new FormsToolstripMenuItemView();
+            this.m_WhiteDumbComputer = new FormsToolstripMenuItemView();
+            this.m_WhiteOkComputer = new FormsToolstripMenuItemView();
+            this.m_WhiteSmartComputer = new FormsToolstripMenuItemView();
+            this.m_WhiteGeniusComputer = new FormsToolstripMenuItemView();
+            this.m_MainToolbar = new Reverci.view.forms.FormsMainToolbarView();
             this.m_StatusView = new Reverci.view.forms.FormsStatusView();
+            this.m_StateBar = new Reverci.view.forms.FormsStateView();
             this.m_MainMenu.SuspendLayout();
+            this.m_MainToolbar.SuspendLayout();
             this.SuspendLayout();
             // 
             // m_MainMenu
@@ -78,8 +80,8 @@ namespace Reverci.view.forms
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.m_NewGame,
-            this.saveGameToolStripMenuItem,
-            this.loadGameToolStripMenuItem,
+            this.m_SaveGame,
+            this.m_LoadGame,
             this.toolStripSeparator1,
             this.m_Statistics,
             this.toolStripSeparator2,
@@ -94,21 +96,18 @@ namespace Reverci.view.forms
             this.m_NewGame.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.m_NewGame.Size = new System.Drawing.Size(164, 22);
             this.m_NewGame.Text = "New Game";
-            this.m_NewGame.Click += new System.EventHandler(this.FormsMainMenu_NewGame);
             // 
-            // saveGameToolStripMenuItem
+            // m_SaveGame
             // 
-            this.saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
-            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.saveGameToolStripMenuItem.Text = "Save Game";
-            this.saveGameToolStripMenuItem.Click += new System.EventHandler(this.FormsGameView_SaveGame);
+            this.m_SaveGame.Name = "m_SaveGame";
+            this.m_SaveGame.Size = new System.Drawing.Size(164, 22);
+            this.m_SaveGame.Text = "Save Game";
             // 
-            // loadGameToolStripMenuItem
+            // m_LoadGame
             // 
-            this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
-            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.loadGameToolStripMenuItem.Text = "Load Game";
-            this.loadGameToolStripMenuItem.Click += new System.EventHandler(this.FormsGameView_LoadGame);
+            this.m_LoadGame.Name = "m_LoadGame";
+            this.m_LoadGame.Size = new System.Drawing.Size(164, 22);
+            this.m_LoadGame.Text = "Load Game";
             // 
             // toolStripSeparator1
             // 
@@ -120,7 +119,6 @@ namespace Reverci.view.forms
             this.m_Statistics.Name = "m_Statistics";
             this.m_Statistics.Size = new System.Drawing.Size(164, 22);
             this.m_Statistics.Text = "Statistics...";
-            this.m_Statistics.Click += new System.EventHandler(this.FormsGameView_Statistics);
             // 
             // toolStripSeparator2
             // 
@@ -132,7 +130,6 @@ namespace Reverci.view.forms
             this.m_Exit.Name = "m_Exit";
             this.m_Exit.Size = new System.Drawing.Size(164, 22);
             this.m_Exit.Text = "Exit";
-            this.m_Exit.Click += new System.EventHandler(this.FormsGameView_Exit);
             // 
             // optionsToolStripMenuItem
             // 
@@ -145,19 +142,15 @@ namespace Reverci.view.forms
             // 
             // m_ShowValidMoves
             // 
-            this.m_ShowValidMoves.CheckOnClick = true;
             this.m_ShowValidMoves.Name = "m_ShowValidMoves";
             this.m_ShowValidMoves.Size = new System.Drawing.Size(159, 22);
             this.m_ShowValidMoves.Text = "Show Valid Moves";
-            this.m_ShowValidMoves.CheckedChanged += new System.EventHandler(this.FormsGameView_ShowValidMoves);
             // 
             // m_PreviewMoves
             // 
-            this.m_PreviewMoves.CheckOnClick = true;
             this.m_PreviewMoves.Name = "m_PreviewMoves";
             this.m_PreviewMoves.Size = new System.Drawing.Size(159, 22);
             this.m_PreviewMoves.Text = "Preview Moves";
-            this.m_PreviewMoves.CheckedChanged += new System.EventHandler(this.FormsGameView_PreviewMoves);
             // 
             // playersToolStripMenuItem
             // 
@@ -177,50 +170,38 @@ namespace Reverci.view.forms
             this.m_BlackSmartComputer,
             this.m_BlackGeniusComputer});
             this.blackToolStripMenuItem.Name = "blackToolStripMenuItem";
-            this.blackToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.blackToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.blackToolStripMenuItem.Text = "Black";
             // 
             // m_BlackUser
             // 
-            this.m_BlackUser.Checked = true;
-            this.m_BlackUser.CheckOnClick = true;
-            this.m_BlackUser.CheckState = System.Windows.Forms.CheckState.Checked;
             this.m_BlackUser.Name = "m_BlackUser";
             this.m_BlackUser.Size = new System.Drawing.Size(156, 22);
             this.m_BlackUser.Text = "User";
-            this.m_BlackUser.Click += new System.EventHandler(this.FormsGameView_BlackUser);
             // 
             // m_BlackDumbComputer
             // 
-            this.m_BlackDumbComputer.CheckOnClick = true;
             this.m_BlackDumbComputer.Name = "m_BlackDumbComputer";
             this.m_BlackDumbComputer.Size = new System.Drawing.Size(156, 22);
             this.m_BlackDumbComputer.Text = "Dumb Computer";
-            this.m_BlackDumbComputer.Click += new System.EventHandler(this.FormsGameView_BlackDumbComputer);
             // 
             // m_BlackOkComputer
             // 
-            this.m_BlackOkComputer.CheckOnClick = true;
             this.m_BlackOkComputer.Name = "m_BlackOkComputer";
             this.m_BlackOkComputer.Size = new System.Drawing.Size(156, 22);
             this.m_BlackOkComputer.Text = "Ok Computer";
-            this.m_BlackOkComputer.Click += new System.EventHandler(this.FormsGameView_BlackOkComputer);
             // 
             // m_BlackSmartComputer
             // 
-            this.m_BlackSmartComputer.CheckOnClick = true;
             this.m_BlackSmartComputer.Name = "m_BlackSmartComputer";
             this.m_BlackSmartComputer.Size = new System.Drawing.Size(156, 22);
             this.m_BlackSmartComputer.Text = "Smart Computer";
-            this.m_BlackSmartComputer.Click += new System.EventHandler(this.FormsGameView_BlackSmartComputer);
             // 
             // m_BlackGeniusComputer
             // 
-            this.m_BlackGeniusComputer.CheckOnClick = true;
             this.m_BlackGeniusComputer.Name = "m_BlackGeniusComputer";
             this.m_BlackGeniusComputer.Size = new System.Drawing.Size(156, 22);
             this.m_BlackGeniusComputer.Text = "Genius Computer";
-            this.m_BlackGeniusComputer.Click += new System.EventHandler(this.FormsGameView_BlackGeniusComputer);
             // 
             // whiteToolStripMenuItem
             // 
@@ -231,50 +212,58 @@ namespace Reverci.view.forms
             this.m_WhiteSmartComputer,
             this.m_WhiteGeniusComputer});
             this.whiteToolStripMenuItem.Name = "whiteToolStripMenuItem";
-            this.whiteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.whiteToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.whiteToolStripMenuItem.Text = "White";
             // 
             // m_WhiteUser
             // 
-            this.m_WhiteUser.Checked = true;
-            this.m_WhiteUser.CheckOnClick = true;
-            this.m_WhiteUser.CheckState = System.Windows.Forms.CheckState.Checked;
             this.m_WhiteUser.Name = "m_WhiteUser";
             this.m_WhiteUser.Size = new System.Drawing.Size(156, 22);
             this.m_WhiteUser.Text = "User";
-            this.m_WhiteUser.Click += new System.EventHandler(this.FormsGameView_WhiteUser);
             // 
             // m_WhiteDumbComputer
             // 
-            this.m_WhiteDumbComputer.CheckOnClick = true;
             this.m_WhiteDumbComputer.Name = "m_WhiteDumbComputer";
             this.m_WhiteDumbComputer.Size = new System.Drawing.Size(156, 22);
             this.m_WhiteDumbComputer.Text = "Dumb Computer";
-            this.m_WhiteDumbComputer.Click += new System.EventHandler(this.FormsGameView_WhiteDumbComputer);
             // 
             // m_WhiteOkComputer
             // 
-            this.m_WhiteOkComputer.CheckOnClick = true;
             this.m_WhiteOkComputer.Name = "m_WhiteOkComputer";
             this.m_WhiteOkComputer.Size = new System.Drawing.Size(156, 22);
             this.m_WhiteOkComputer.Text = "Ok Computer";
-            this.m_WhiteOkComputer.Click += new System.EventHandler(this.FormsGameView_WhiteOkComputer);
             // 
             // m_WhiteSmartComputer
             // 
-            this.m_WhiteSmartComputer.CheckOnClick = true;
             this.m_WhiteSmartComputer.Name = "m_WhiteSmartComputer";
             this.m_WhiteSmartComputer.Size = new System.Drawing.Size(156, 22);
             this.m_WhiteSmartComputer.Text = "Smart Computer";
-            this.m_WhiteSmartComputer.Click += new System.EventHandler(this.FormsGameView_WhiteSmartComputer);
             // 
             // m_WhiteGeniusComputer
             // 
-            this.m_WhiteGeniusComputer.CheckOnClick = true;
             this.m_WhiteGeniusComputer.Name = "m_WhiteGeniusComputer";
             this.m_WhiteGeniusComputer.Size = new System.Drawing.Size(156, 22);
             this.m_WhiteGeniusComputer.Text = "Genius Computer";
-            this.m_WhiteGeniusComputer.Click += new System.EventHandler(this.FormsGameView_WhiteGeniusComputer);
+            // 
+            // m_MainToolbar
+            // 
+            this.m_MainToolbar.Location = new System.Drawing.Point(0, 24);
+            this.m_MainToolbar.Name = "m_MainToolbar";
+            this.m_MainToolbar.Size = new System.Drawing.Size(633, 25);
+            this.m_MainToolbar.TabIndex = 4;
+            this.m_MainToolbar.Text = "m_MainToolbar";
+            
+            // 
+            // m_StatusView
+            // 
+            this.m_StatusView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.m_StatusView.BackColor = System.Drawing.Color.LightSlateGray;
+            this.m_StatusView.Location = new System.Drawing.Point(441, 49);
+            this.m_StatusView.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.m_StatusView.Name = "m_StatusView";
+            this.m_StatusView.Size = new System.Drawing.Size(192, 417);
+            this.m_StatusView.TabIndex = 3;
             // 
             // m_StateBar
             // 
@@ -286,23 +275,13 @@ namespace Reverci.view.forms
             this.m_StateBar.TabIndex = 2;
             this.m_StateBar.Text = "m_StateBar";
             // 
-            // m_StatusView
-            // 
-            this.m_StatusView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.m_StatusView.BackColor = System.Drawing.Color.LightSlateGray;
-            this.m_StatusView.Location = new System.Drawing.Point(441, 24);
-            this.m_StatusView.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.m_StatusView.Name = "m_StatusView";
-            this.m_StatusView.Size = new System.Drawing.Size(192, 442);
-            this.m_StatusView.TabIndex = 3;
-            // 
             // FormsGameView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(633, 488);
+            this.Controls.Add(this.m_MainToolbar);
             this.Controls.Add(this.m_StatusView);
             this.Controls.Add(this.m_StateBar);
             this.Controls.Add(this.m_MainMenu);
@@ -313,6 +292,8 @@ namespace Reverci.view.forms
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormsGameView_Closing);
             this.m_MainMenu.ResumeLayout(false);
             this.m_MainMenu.PerformLayout();
+            this.m_MainToolbar.ResumeLayout(false);
+            this.m_MainToolbar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,30 +303,32 @@ namespace Reverci.view.forms
 
         private MenuStrip m_MainMenu;
         private ToolStripMenuItem fileToolStripMenuItem;
-        private ToolStripMenuItem m_NewGame;
-        private ToolStripMenuItem m_Exit;
-        private ToolStripMenuItem m_Statistics;
+        private FormsToolstripMenuItemView m_NewGame;
+        private FormsToolstripMenuItemView m_Exit;
+        private FormsToolstripMenuItemView m_Statistics;
         private ToolStripMenuItem optionsToolStripMenuItem;
-        private ToolStripMenuItem m_ShowValidMoves;
-        private ToolStripMenuItem m_PreviewMoves;
+        private FormsToolstripMenuItemView m_ShowValidMoves;
+        private FormsToolstripMenuItemView m_PreviewMoves;
         private ToolStripMenuItem playersToolStripMenuItem;
         private ToolStripMenuItem blackToolStripMenuItem;
-        private ToolStripMenuItem m_BlackUser;
+        private FormsToolstripMenuItemView m_BlackUser;
         private ToolStripMenuItem whiteToolStripMenuItem;
-        private ToolStripMenuItem m_WhiteUser;
-        private ToolStripMenuItem m_WhiteDumbComputer;
+        private FormsToolstripMenuItemView m_WhiteUser;
+        private FormsToolstripMenuItemView m_WhiteDumbComputer;
         private FormsStateView m_StateBar;
         private FormsStatusView m_StatusView;
-        private ToolStripMenuItem saveGameToolStripMenuItem;
-        private ToolStripMenuItem loadGameToolStripMenuItem;
+        private FormsToolstripMenuItemView m_SaveGame;
+        private FormsToolstripMenuItemView m_LoadGame;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripSeparator toolStripSeparator2;
-        private ToolStripMenuItem m_BlackOkComputer;
-        private ToolStripMenuItem m_BlackSmartComputer;
-        private ToolStripMenuItem m_BlackGeniusComputer;
-        private ToolStripMenuItem m_BlackDumbComputer;
-        private ToolStripMenuItem m_WhiteOkComputer;
-        private ToolStripMenuItem m_WhiteSmartComputer;
-        private ToolStripMenuItem m_WhiteGeniusComputer;
+        private FormsToolstripMenuItemView m_BlackOkComputer;
+        private FormsToolstripMenuItemView m_BlackSmartComputer;
+        private FormsToolstripMenuItemView m_BlackGeniusComputer;
+        private FormsToolstripMenuItemView m_BlackDumbComputer;
+        private FormsToolstripMenuItemView m_WhiteOkComputer;
+        private FormsToolstripMenuItemView m_WhiteSmartComputer;
+        private FormsToolstripMenuItemView m_WhiteGeniusComputer;
+        private FormsMainToolbarView m_MainToolbar;
+       
     }
 }

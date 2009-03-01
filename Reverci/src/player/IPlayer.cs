@@ -1,11 +1,12 @@
 ﻿using System.Drawing;
+using Reverci.board;
 using Reverci.model;
 
 namespace Reverci.player
 {
     public interface IPlayer
     {
-        void setColor(eSquareType i_Color);
+        void setColor(eCoinType i_Color);
 
         void setBoardModel(IBoardModel i_Model);
 
@@ -13,6 +14,6 @@ namespace Reverci.player
 
         Point GetMove();
 
-        eSquareType getColor();
+        eCoinType getColor();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using NUnit.Framework;
+using Reverci.board;
 using Reverci.model;
 using Reverci.player;
 
@@ -27,17 +28,17 @@ namespace ReverciUT.player
                                                        ));
             var player = new SmartComputerPlayer(2);
             player.setBoardModel(boardModel);
-            player.setColor(eSquareType.Black);
+            player.setColor(eCoinType.Black);
             Assert.AreEqual(new Point(0, 1), player.GetMove());
         }
 
-        private eSquareType[][] createBoardFrom(int[][] ints)
+        private eCoinType[][] createBoardFrom(int[][] ints)
         {
             var boardSize = ints.Length;
-            var arr = new eSquareType[boardSize][];
+            var arr = new eCoinType[boardSize][];
             for (var i = 0; i < boardSize; i++)
             {
-                arr[i] = new eSquareType[boardSize];
+                arr[i] = new eCoinType[boardSize];
                 for (var j = 0; j < boardSize; j++)
                 {
                     arr[i][j] = convertToSquareType(ints[j][i]);
@@ -46,16 +47,16 @@ namespace ReverciUT.player
             return arr;
         }
 
-        private eSquareType convertToSquareType(int i)
+        private eCoinType convertToSquareType(int i)
         {
             switch (i)
             {
                 case B:
-                    return eSquareType.Black;
+                    return eCoinType.Black;
                 case W:
-                    return eSquareType.White;
+                    return eCoinType.White;
             }
-            return eSquareType.Empty;
+            return eCoinType.Empty;
         }
     }
 }

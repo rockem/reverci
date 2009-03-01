@@ -4,6 +4,6 @@ namespace Reverci.view
 {
     public interface IComponentView
     {
-        void setEventListener(IEventListener i_Listener);
+        void SetEventListener(IEventListener i_Listener);
     }
 }

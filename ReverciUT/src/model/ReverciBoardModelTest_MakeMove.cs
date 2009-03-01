@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using NUnit.Framework;
+using Reverci.board;
 using Reverci.model;
 
 namespace ReverciUT.model
@@ -24,7 +25,7 @@ namespace ReverciUT.model
                     }
                 );
 
-            var validMoves = m_BoardModel.GetPreviewFor(1, 3, eSquareType.White);
+            var validMoves = m_BoardModel.GetPreviewFor(1, 3, eCoinType.White);
             Assert.IsTrue(!validMoves.Contains(new Point(1, 2)));
         }
 
@@ -43,7 +44,7 @@ namespace ReverciUT.model
 
             try
             {
-                m_BoardModel.MakeMove(3, 2, eSquareType.Black);
+                m_BoardModel.MakeMove(3, 2, eCoinType.Black);
                 Assert.Fail();
             }
             catch (NonValidMoveException)
@@ -65,7 +66,7 @@ namespace ReverciUT.model
                 );
             try
             {
-                m_BoardModel.MakeMove(0, 2, eSquareType.Black);
+                m_BoardModel.MakeMove(0, 2, eCoinType.Black);
                 //pass
             }
             catch (NonValidMoveException)
@@ -77,10 +78,10 @@ namespace ReverciUT.model
         private IBoardModel createModelFrom(int[][] ints)
         {
             var boardSize = ints.Length;
-            var arr = new eSquareType[boardSize][];
+            var arr = new eCoinType[boardSize][];
             for (var i = 0; i < boardSize; i++)
             {
-                arr[i] = new eSquareType[boardSize];
+                arr[i] = new eCoinType[boardSize];
                 for (var j = 0; j < boardSize; j++)
                 {
                     arr[i][j] = convertToSquareType(ints[j][i]);
@@ -89,16 +90,16 @@ namespace ReverciUT.model
             return new ReverciBoardModel(arr);
         }
 
-        private eSquareType convertToSquareType(int i)
+        private eCoinType convertToSquareType(int i)
         {
             switch (i)
             {
                 case B:
-                    return eSquareType.Black;
+                    return eCoinType.Black;
                 case W:
-                    return eSquareType.White;
+                    return eCoinType.White;
             }
-            return eSquareType.Empty;
+            return eCoinType.Empty;
         }
 
         [Test]
@@ -116,7 +117,7 @@ namespace ReverciUT.model
 
             try
             {
-                m_BoardModel.MakeMove(1, 3, eSquareType.White);
+                m_BoardModel.MakeMove(1, 3, eCoinType.White);
             }
             catch (NonValidMoveException)
             {

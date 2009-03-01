@@ -1,14 +1,15 @@
 ﻿using System.Drawing;
+using Reverci.board;
 using Reverci.model;
 
 namespace Reverci.player
 {
     public abstract class AbstractPlayer : IPlayer
     {
-        private eSquareType m_Color;
+        private eCoinType m_Color;
         private IBoardModel m_BoardModel;
 
-        public void setColor(eSquareType i_Color)
+        public void setColor(eCoinType i_Color)
         {
             m_Color = i_Color;
         }
@@ -22,7 +23,7 @@ namespace Reverci.player
 
         public abstract Point GetMove();
 
-        public eSquareType getColor()
+        public eCoinType getColor()
         {
             return m_Color;
         }

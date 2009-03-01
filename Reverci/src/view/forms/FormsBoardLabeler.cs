@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Reverci.board;
 using Reverci.comp;
-using Reverci.model;
 
 namespace Reverci.view.forms
 {
@@ -19,7 +19,7 @@ namespace Reverci.view.forms
         public FormsBoardLabeler(IBoardView i_BoardView)
         {
             r_BoardView = i_BoardView;
-            r_BoardView.setEventListener(this);
+            r_BoardView.SetEventListener(this);
             InitializeComponent();
             initializeBoardComponent();
             m_LetterLabels = new CreateLetterLabels(this).createLabels();
@@ -164,7 +164,7 @@ namespace Reverci.view.forms
             return (Height - r_LabelsThickness) / s_BoardSize;
         }
 
-        public void UpdateBoardWith(eSquareType[][] i_BoardData)
+        public void UpdateBoardWith(eCoinType[][] i_BoardData)
         {
             if (i_BoardData.Length != s_BoardSize)
             {
@@ -178,12 +178,12 @@ namespace Reverci.view.forms
             repaintLabels();
         }
 
-        public void setEventListener(IEventListener i_Listener)
+        public void SetEventListener(IEventListener i_Listener)
         {
             m_EventListener = (IBoardViewEventListener)i_Listener;
         }
 
-        public void AddPreview(List<Point> i_Points, eSquareType i_Color)
+        public void AddPreview(List<Point> i_Points, eCoinType i_Color)
         {
             r_BoardView.AddPreview(i_Points, i_Color);
         }

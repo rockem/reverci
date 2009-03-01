@@ -69,7 +69,7 @@ namespace Reverci.view.forms
             Show();
         }
 
-        public void setEventListener(IEventListener i_Listener)
+        public void SetEventListener(IEventListener i_Listener)
         {
             m_EventListener = (IStatisticsEventListener)i_Listener;
         }

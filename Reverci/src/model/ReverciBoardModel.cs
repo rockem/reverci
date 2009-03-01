@@ -1,28 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
+using Reverci.board;
 
 namespace Reverci.model
 {
     public class ReverciBoardModel : IBoardModel
     {
-        private readonly eSquareType[][] r_BoardData;
-        private readonly int r_BoardSize;
+        private readonly Board r_Board;
 
-        public ReverciBoardModel(eSquareType[][] i_BoardData)
+        public ReverciBoardModel(eCoinType[][] i_BoardData)
         {
-            r_BoardData = i_BoardData;
-            r_BoardSize = r_BoardData.Length;
+            r_Board = new Board(i_BoardData);
         }
 
-        public void MakeMove(int i_X, int i_Y, eSquareType i_Color)
+        public void MakeMove(int i_X, int i_Y, eCoinType i_Color)
         {
             validateMove(i_X, i_Y, i_Color);
-            r_BoardData[i_X][i_Y] = i_Color;
+            r_Board.Set(i_Color, i_X, i_Y);
             eatOtherColorFrom(i_X, i_Y, i_Color);
         }
 
-        private void validateMove(int i_X, int i_Y, eSquareType i_Color)
+        private void validateMove(int i_X, int i_Y, eCoinType i_Color)
         {
             if (!thereIsSomethingToEatOn(i_X, i_Y, i_Color))
             {
@@ -30,11 +28,11 @@ namespace Reverci.model
             }
         }
 
-        private void eatOtherColorFrom(int i_X, int i_Y, eSquareType i_Color)
+        private void eatOtherColorFrom(int i_X, int i_Y, eCoinType i_Color)
         {
             foreach (var position in whoCanIEatFrom(i_X, i_Y, i_Color))
             {
-                r_BoardData[position.X][position.Y] = i_Color;
+                r_Board.Set(i_Color, position.X, position.Y);
             }
         }
 
@@ -48,9 +46,9 @@ namespace Reverci.model
             }
 
             private readonly ReverciBoardModel r_BoardModel;
-            private readonly eSquareType r_Color;
+            private readonly eCoinType r_Color;
 
-            protected ScanTemplate(ReverciBoardModel i_BoardModel, eSquareType i_Color)
+            protected ScanTemplate(ReverciBoardModel i_BoardModel, eCoinType i_Color)
             {
                 r_BoardModel = i_BoardModel;
                 r_Color = i_Color;
@@ -79,7 +77,7 @@ namespace Reverci.model
                             }
                             else
                             {
-                                if (r_BoardModel.r_BoardData[currentX][currentY] == r_Color)
+                                if (r_BoardModel.r_Board.Get(currentX, currentY) == r_Color)
                                 {
                                     allICanEat.AddRange(listToEat);
                                 }
@@ -99,7 +97,7 @@ namespace Reverci.model
 
             private bool isOtherColorOn(int currentX, int currentY)
             {
-                return r_BoardModel.r_BoardData[currentX][currentY] ==
+                return r_BoardModel.r_Board.Get(currentX, currentY) ==
                        SquareTypeUtil.GetOtherColor(r_Color);
             }
 
@@ -109,13 +107,13 @@ namespace Reverci.model
 
             protected int maxPosition()
             {
-                return r_BoardModel.r_BoardSize - 1;
+                return r_BoardModel.r_Board.Size() - 1;
             }
         }
 
         private class ScanForwardTemplate : ScanTemplate
         {
-            public ScanForwardTemplate(ReverciBoardModel i_BoardModel, eSquareType i_Color) :
+            public ScanForwardTemplate(ReverciBoardModel i_BoardModel, eCoinType i_Color) :
                 base(i_BoardModel, i_Color)
             {
             }
@@ -138,7 +136,7 @@ namespace Reverci.model
 
         private class ScanBackwardTemplate : ScanTemplate
         {
-            public ScanBackwardTemplate(ReverciBoardModel i_BoardModel, eSquareType i_Color) :
+            public ScanBackwardTemplate(ReverciBoardModel i_BoardModel, eCoinType i_Color) :
                 base(i_BoardModel, i_Color)
             {
             }
@@ -161,7 +159,7 @@ namespace Reverci.model
 
         private class ScanDownBackDiagonalTemplate : ScanTemplate
         {
-            public ScanDownBackDiagonalTemplate(ReverciBoardModel i_BoardModel, eSquareType i_Color) :
+            public ScanDownBackDiagonalTemplate(ReverciBoardModel i_BoardModel, eCoinType i_Color) :
                 base(i_BoardModel, i_Color)
             {
             }
@@ -182,7 +180,7 @@ namespace Reverci.model
 
         private class ScanUpForwardDiagonalTemplate : ScanTemplate
         {
-            public ScanUpForwardDiagonalTemplate(ReverciBoardModel i_BoardModel, eSquareType i_Color) :
+            public ScanUpForwardDiagonalTemplate(ReverciBoardModel i_BoardModel, eCoinType i_Color) :
                 base(i_BoardModel, i_Color)
             {
             }
@@ -201,7 +199,7 @@ namespace Reverci.model
             }
         }
 
-        private List<Point> whoCanIEatFrom(int i_X, int i_Y, eSquareType i_Color)
+        private List<Point> whoCanIEatFrom(int i_X, int i_Y, eCoinType i_Color)
         {
             var listToEat = new List<Point>();
             listToEat.AddRange(new ScanForwardTemplate(this, i_Color).whoToEatFrom(i_X, i_Y));
@@ -212,29 +210,17 @@ namespace Reverci.model
             return listToEat;
         }
 
-        public eSquareType[][] GetBoard()
+        public eCoinType[][] GetBoard()
         {
-            return createACopyOfTheBoard();
+            return r_Board.GetData();
         }
 
-        private eSquareType[][] createACopyOfTheBoard()
-        {
-            var boardCopy = new eSquareType[r_BoardData.Length][];
-            for (var i = 0; i < r_BoardData.Length; i++)
-            {
-                boardCopy[i] = new eSquareType[r_BoardData.Length];
-                Array.Copy(r_BoardData[i], boardCopy[i], r_BoardData.Length);
-            }
-
-            return boardCopy;
-        }
-
-        public List<Point> GetPossibleMovesFor(eSquareType i_Color)
+        public List<Point> GetPossibleMovesFor(eCoinType i_Color)
         {
             var possibleMoves = new List<Point>();
-            for (var i = 0; i < r_BoardSize; i++)
+            for (var i = 0; i < r_Board.Size(); i++)
             {
-                for (var j = 0; j < r_BoardSize; j++)
+                for (var j = 0; j < r_Board.Size(); j++)
                 {
                     if (thereIsSomethingToEatOn(i, j, i_Color))
                     {
@@ -246,7 +232,7 @@ namespace Reverci.model
             return possibleMoves;
         }
 
-        public List<Point> GetPreviewFor(int i_X, int i_Y, eSquareType i_Color)
+        public List<Point> GetPreviewFor(int i_X, int i_Y, eCoinType i_Color)
         {
             var preview = new List<Point>();
             if (emptySquareOn(i_X, i_Y))
@@ -257,12 +243,12 @@ namespace Reverci.model
             return preview;
         }
 
-        private bool emptySquareOn(int i, int j)
+        private bool emptySquareOn(int i_X, int i_Y)
         {
-            return r_BoardData[i][j] == eSquareType.Empty;
+            return r_Board.Get(i_X, i_Y) == eCoinType.Empty;
         }
 
-        private bool thereIsSomethingToEatOn(int i, int j, eSquareType i_Color)
+        private bool thereIsSomethingToEatOn(int i, int j, eCoinType i_Color)
         {
             var result = false;
             if (emptySquareOn(i, j))
@@ -273,17 +259,14 @@ namespace Reverci.model
             return result;
         }
 
-        public int GetPieceCountOfType(eSquareType i_SquareType)
+        public int GetPieceCountOfType(eCoinType i_CoinType)
         {
             var counter = 0;
-            for (var i = 0; i < r_BoardSize; i++)
+            foreach (Coin coin in r_Board)
             {
-                for (var j = 0; j < r_BoardSize; j++)
+                if (coin.CoinType == i_CoinType)
                 {
-                    if (r_BoardData[i][j] == i_SquareType)
-                    {
-                        counter++;
-                    }
+                    counter++;
                 }
             }
 

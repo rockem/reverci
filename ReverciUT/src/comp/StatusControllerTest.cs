@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using Reverci;
+using Reverci.board;
 using Reverci.comp;
-using Reverci.model;
 using Reverci.view;
 
 namespace ReverciUT.comp
@@ -69,8 +69,8 @@ namespace ReverciUT.comp
                                 new[] { "1", "Black", "B5" },
                                 new[] { "2", "White", "E6" },
                             };
-            m_StatusController.LogMove(1, 4, eSquareType.Black);
-            m_StatusController.LogMove(4, 5, eSquareType.White);
+            m_StatusController.LogMove(1, 4, eCoinType.Black);
+            m_StatusController.LogMove(4, 5, eCoinType.White);
             Assert.AreEqual(moves, m_View.m_MovesList);
         }
     }

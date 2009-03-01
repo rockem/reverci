@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Reverci
 {
@@ -7,8 +8,7 @@ namespace Reverci
         public static void SaveObjectToFile(string i_FullPath, object i_Object)
         {
             var stream = new FileStream(i_FullPath, FileMode.Create, FileAccess.Write);
-            var objectIO = new ObjectIO(stream);
-            objectIO.Write(i_Object);
+            new BinaryFormatter().Serialize(stream, i_Object);
             stream.Close();
         }
 
@@ -17,8 +17,7 @@ namespace Reverci
             try
             {
                 var stream = new FileStream(i_FullPath, FileMode.Open, FileAccess.Read);
-                var objectIO = new ObjectIO(stream);
-                var obj = objectIO.Read();
+                var obj = new BinaryFormatter().Deserialize(stream);
                 stream.Close();
                 return obj;
             }
