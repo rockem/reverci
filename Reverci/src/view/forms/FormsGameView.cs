@@ -17,6 +17,8 @@ namespace Reverci.view.forms
         private readonly StateController r_StateController;
         private readonly StatusController r_StatusController;
         private readonly StatisticsController r_StatisticsController;
+        private readonly StatisticsHolder r_StatisticsHolder = new StatisticsHolder();
+        private GameOptions r_GameOptions = new GameOptions();
 
         private static Dictionary<ePlayerType, eCommandType> m_BPlayerToCommand;
         private static Dictionary<ePlayerType, eCommandType> m_WPlayerToCommand;

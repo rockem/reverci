@@ -83,8 +83,7 @@ namespace ReverciUT.comp
         [SetUp]
         public void setUp()
         {
-            m_PossibleMoves = new List<Point>();
-            m_PossibleMoves.Add(new Point(2, 3));
+            m_PossibleMoves = new List<Point> {new Point(2, 3)};
             m_BoardView = new StubBoardView();
             m_MockModel = new DynamicMock(typeof (IBoardModel));
             m_BoardController = new BoardController(m_BoardView);
@@ -241,6 +240,7 @@ namespace ReverciUT.comp
         public void testShouldDelegateDrawToEventListenr()
         {
             m_MockModel.SetReturnValue("GetPossibleMovesFor", new List<Point>());
+            m_MockModel.SetReturnValue("GetPossibleMovesFor", new List<Point>());
             m_EventListener.Expect("DispatchCurrentState", new object[] { eStateType.Draw });
             var count = 4;
             m_MockModel.ExpectAndReturn("GetPieceCountOfType", count, new object[] { eCoinType.Black });
@@ -285,6 +285,20 @@ namespace ReverciUT.comp
             m_BoardController.SetModel((IBoardModel)m_MockModel.MockInstance);
             m_MockModel.ExpectAndReturn("MakeMove", null,
                                         new object[] { 0, 0, eCoinType.Black });
+            m_BoardController.DispatchMove(0, 0);
+            m_MockModel.Verify();
+        }
+
+        [Test]
+        public void testShouldNotEndGameWhenOtherPlayerCanPlay()
+        {
+            m_MockModel.ExpectAndReturn("GetPossibleMovesFor", new List<Point>(), eCoinType.White);
+            var moves = new List<Point>
+                           {
+                               new Point(1, 1)
+                           };
+            m_MockModel.ExpectAndReturn("GetPossibleMovesFor", moves, eCoinType.Black);
+            m_EventListener.Expect("DispatchCurrentState", new object[] { eStateType.BlackTurn });
             m_BoardController.DispatchMove(0, 0);
             m_MockModel.Verify();
         }

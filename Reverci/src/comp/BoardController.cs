@@ -44,7 +44,9 @@ namespace Reverci.comp
 
         private void dispatchCurrentState()
         {
-            if (m_BoardModel.GetPossibleMovesFor(getCurrentPlayerColor()).Count == 0)
+            bool itsNotPossibleForMeToMove = noPossibleMovesFor(getCurrentPlayerColor());
+            if (itsNotPossibleForMeToMove &&
+                noPossibleMovesFor(SquareTypeUtil.GetOtherColor(getCurrentPlayerColor())))
             {
                 var blackCount = m_BoardModel.GetPieceCountOfType(eCoinType.Black);
                 var whiteCount = m_BoardModel.GetPieceCountOfType(eCoinType.White);
@@ -67,14 +69,28 @@ namespace Reverci.comp
                     OthelloData.GetInstance().OthelloOptions.BlackPlayer,
                     OthelloData.GetInstance().OthelloOptions.WhitePlayer);
             }
-            else if (getCurrentPlayerColor() == eCoinType.Black)
-            {
-                m_EventListener.DispatchCurrentState(eStateType.BlackTurn);
-            }
             else
             {
-                m_EventListener.DispatchCurrentState(eStateType.WhiteTurn);
+                if (itsNotPossibleForMeToMove)
+                {
+                    m_CurrentPlayer = SquareTypeUtil.GetOtherColor(m_CurrentPlayer);
+                }
+
+
+                if (getCurrentPlayerColor() == eCoinType.Black)
+                {
+                    m_EventListener.DispatchCurrentState(eStateType.BlackTurn);
+                }
+                else
+                {
+                    m_EventListener.DispatchCurrentState(eStateType.WhiteTurn);
+                }
             }
+        }
+
+        private bool noPossibleMovesFor(eCoinType i_Color)
+        {
+            return m_BoardModel.GetPossibleMovesFor(i_Color).Count == 0;
         }
 
         public void DispatchMove(int i_X, int i_Y)
@@ -171,7 +187,7 @@ namespace Reverci.comp
 
         private void automaticPlay()
         {
-            if (currentPlayerCanMakeMove() && currentPlayerIsAutoPlayer())
+            if (currentPlayerIsAutoPlayer() && currentPlayerCanMakeMove())
             {
                 m_LockHumanPlay = true;
                 m_EventListener.DispatchCurrentState(eStateType.Thinking);
