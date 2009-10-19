@@ -5,7 +5,7 @@ Name Reverci
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 3-3
+!define VERSION 3-4
 !define COMPANY ""
 !define URL http://code.google.com/p/reverci/
 
@@ -15,6 +15,7 @@ Name Reverci
 !define MUI_LICENSEPAGE_CHECKBOX
 !define MUI_FINISHPAGE_RUN $INSTDIR\Reverci.exe
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall-colorful.ico"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "reversi.jpg"
 
 # Included files
 !include Sections.nsh

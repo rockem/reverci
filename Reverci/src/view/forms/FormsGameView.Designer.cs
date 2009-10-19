@@ -34,34 +34,33 @@ namespace Reverci.view.forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormsGameView));
             this.m_MainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_NewGame = new FormsToolstripMenuItemView();
-            this.m_SaveGame = new FormsToolstripMenuItemView();
-            this.m_LoadGame = new FormsToolstripMenuItemView();
+            this.m_NewGame = new Reverci.view.forms.FormsToolstripMenuItemView();
+            this.m_SaveGame = new Reverci.view.forms.FormsToolstripMenuItemView();
+            this.m_LoadGame = new Reverci.view.forms.FormsToolstripMenuItemView();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.m_Statistics = new FormsToolstripMenuItemView();
+            this.m_Statistics = new Reverci.view.forms.FormsToolstripMenuItemView();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.m_Exit = new FormsToolstripMenuItemView();
+            this.m_Exit = new Reverci.view.forms.FormsToolstripMenuItemView();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_ShowValidMoves = new FormsToolstripMenuItemView();
-            this.m_PreviewMoves = new FormsToolstripMenuItemView();
+            this.m_ShowValidMoves = new Reverci.view.forms.FormsToolstripMenuItemView();
+            this.m_PreviewMoves = new Reverci.view.forms.FormsToolstripMenuItemView();
             this.playersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.blackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_BlackUser = new FormsToolstripMenuItemView();
-            this.m_BlackDumbComputer = new FormsToolstripMenuItemView();
-            this.m_BlackOkComputer = new FormsToolstripMenuItemView();
-            this.m_BlackSmartComputer = new FormsToolstripMenuItemView();
-            this.m_BlackGeniusComputer = new FormsToolstripMenuItemView();
+            this.m_BlackUser = new Reverci.view.forms.FormsToolstripMenuItemView();
+            this.m_BlackDumbComputer = new Reverci.view.forms.FormsToolstripMenuItemView();
+            this.m_BlackOkComputer = new Reverci.view.forms.FormsToolstripMenuItemView();
+            this.m_BlackSmartComputer = new Reverci.view.forms.FormsToolstripMenuItemView();
+            this.m_BlackGeniusComputer = new Reverci.view.forms.FormsToolstripMenuItemView();
             this.whiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_WhiteUser = new FormsToolstripMenuItemView();
-            this.m_WhiteDumbComputer = new FormsToolstripMenuItemView();
-            this.m_WhiteOkComputer = new FormsToolstripMenuItemView();
-            this.m_WhiteSmartComputer = new FormsToolstripMenuItemView();
-            this.m_WhiteGeniusComputer = new FormsToolstripMenuItemView();
+            this.m_WhiteUser = new Reverci.view.forms.FormsToolstripMenuItemView();
+            this.m_WhiteDumbComputer = new Reverci.view.forms.FormsToolstripMenuItemView();
+            this.m_WhiteOkComputer = new Reverci.view.forms.FormsToolstripMenuItemView();
+            this.m_WhiteSmartComputer = new Reverci.view.forms.FormsToolstripMenuItemView();
+            this.m_WhiteGeniusComputer = new Reverci.view.forms.FormsToolstripMenuItemView();
             this.m_MainToolbar = new Reverci.view.forms.FormsMainToolbarView();
             this.m_StatusView = new Reverci.view.forms.FormsStatusView();
             this.m_StateBar = new Reverci.view.forms.FormsStateView();
             this.m_MainMenu.SuspendLayout();
-            this.m_MainToolbar.SuspendLayout();
             this.SuspendLayout();
             // 
             // m_MainMenu
@@ -252,7 +251,6 @@ namespace Reverci.view.forms
             this.m_MainToolbar.Size = new System.Drawing.Size(633, 25);
             this.m_MainToolbar.TabIndex = 4;
             this.m_MainToolbar.Text = "m_MainToolbar";
-            
             // 
             // m_StatusView
             // 
@@ -287,13 +285,11 @@ namespace Reverci.view.forms
             this.Controls.Add(this.m_MainMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormsGameView";
-            this.Text = "Reverci";
+            this.Text = "Reverci 3.4";
             this.Load += new System.EventHandler(this.FormsGameView_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormsGameView_Closing);
             this.m_MainMenu.ResumeLayout(false);
             this.m_MainMenu.PerformLayout();
-            this.m_MainToolbar.ResumeLayout(false);
-            this.m_MainToolbar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
