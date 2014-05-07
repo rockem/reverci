@@ -1,7 +1,6 @@
 # Description
 Reverci is a C# implementation of the game Othello/Reversi. 
-You can read about the game and its rules by following the "Game Rules" link on the right
-If you find a bug, or have a request for a cool new feature, you're welcome to issue it in the Issues section, And we'll be happy to reply
+If you find a bug, or have a request for a cool new feature, you're welcome to issue it in the Issues section, And we'll be happy to reply.
 
 ## Features
 * List of moves for analyzing a game
@@ -21,4 +20,4 @@ The code has the following design patterns:
 * Template Method
 * Observer
 * Command
-Iterator
+* Iterator
